@@ -56,4 +56,13 @@ public class Timer
     public bool IsPaused { get { return m_isPaused && m_currentTime >=0; } }
     public bool IsRunning { get { return !m_isPaused && m_currentTime >= 0; } }
 
+    public void AddOnTickEvent(OnTickDelegate p_onTickDelegate) { OnTickEvent += p_onTickDelegate; }
+    public void AddOnFinishedEvent(OnFinishedDelegate p_onFinishedDelegate)
+    {
+        OnFinishedEvent += p_onFinishedDelegate;
+    }
+
+    public void ClearEvents() { OnTickEvent = null; OnFinishedEvent = null; }
+    public float Period { get { return m_period; } set { m_period = value; } }
+    public float CurrentTime { get { return m_currentTime; } }
 }

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764ed10cadca4be44af58fd38bf54ea7, type: 3}
   m_Name: _CameraData
   m_EditorClassIdentifier: 
-  m_smoothing: 0.1
-  m_lookAhead: 1
+  m_smoothing: 0
+  m_lookAhead: 0
