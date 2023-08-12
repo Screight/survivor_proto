@@ -76,6 +76,7 @@ namespace SurvivorProto
 
             bullet.Initialize(targetPos, m_bulletSpeed, m_baseDamage);
             bullet.transform.position = PlayerController.Instance.transform.position;
+            m_GUIManager.SetCurrentAmmoTo(m_currentAmmo);
         }
 
         void OnFinishReload() {
@@ -87,6 +88,8 @@ namespace SurvivorProto
             m_shootingTimer.AddOnFinishedEvent(TryShooting);
 
             m_GUIManager.SetReloadBarTo(false);
+            m_GUIManager.SetCurrentAmmoTo(m_currentAmmo);
+            Shoot();
         }
 
         #region Accessors

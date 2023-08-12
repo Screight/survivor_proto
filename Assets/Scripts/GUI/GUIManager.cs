@@ -8,7 +8,12 @@ namespace SurvivorProto
     public class GUIManager : Singleton<GUIManager>
     {
         [SerializeField] Image m_reloadBarFillIMG;
+        [SerializeField] TMPro.TextMeshProUGUI m_currentAmmoTMP;
 
+        public void SetCurrentAmmoTo(int p_ammo) {
+            if(p_ammo < 0) { p_ammo = 0; }
+            m_currentAmmoTMP.text = p_ammo.ToString();
+        }
         public void SetReloadBarTo(bool p_isActive) { m_reloadBarFillIMG.gameObject.transform.parent.gameObject.SetActive(p_isActive); }
         public void SetReloadBarFillTo(float p_fillAmount)
         {
