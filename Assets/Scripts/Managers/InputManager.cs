@@ -11,6 +11,7 @@ namespace SurvivorProto
         InputActions m_inputActions;
 
         Vector2 m_movementInput;
+        Vector2 m_mousePosition;
 
         Dictionary<ACTION_BUTTON, float> m_buttonToPressedTime;
 
@@ -49,6 +50,11 @@ namespace SurvivorProto
             {
                 m_movementInput.y = 0;
             };
+
+            m_inputActions.Player.MousePosition.performed += (m_inputActions) =>
+            {
+                m_mousePosition = m_inputActions.ReadValue<Vector2>();
+            };
         }
 
         private void Update()
@@ -84,7 +90,7 @@ namespace SurvivorProto
                 return resultVector;
             }
         }
-
+        public Vector2 MousePosition { get { return m_mousePosition; } }
         public bool IsButtonPressed(ACTION_BUTTON p_button)
         {
             return m_buttonToPressedTime[p_button] == 0;

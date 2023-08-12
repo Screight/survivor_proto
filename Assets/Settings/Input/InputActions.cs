@@ -44,6 +44,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""05c21807-2305-4ea3-ab46-f7f04ce50422"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -376,6 +385,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""MoveVertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d846bbb-bd37-4bee-8d32-1862079fbbf6"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -386,6 +406,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_MoveHorizontal = m_Player.FindAction("MoveHorizontal", throwIfNotFound: true);
         m_Player_MoveVertical = m_Player.FindAction("MoveVertical", throwIfNotFound: true);
+        m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -449,12 +470,14 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_MoveHorizontal;
     private readonly InputAction m_Player_MoveVertical;
+    private readonly InputAction m_Player_MousePosition;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
         public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveHorizontal => m_Wrapper.m_Player_MoveHorizontal;
         public InputAction @MoveVertical => m_Wrapper.m_Player_MoveVertical;
+        public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -470,6 +493,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @MoveVertical.started += instance.OnMoveVertical;
             @MoveVertical.performed += instance.OnMoveVertical;
             @MoveVertical.canceled += instance.OnMoveVertical;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -480,6 +506,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @MoveVertical.started -= instance.OnMoveVertical;
             @MoveVertical.performed -= instance.OnMoveVertical;
             @MoveVertical.canceled -= instance.OnMoveVertical;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -501,5 +530,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     {
         void OnMoveHorizontal(InputAction.CallbackContext context);
         void OnMoveVertical(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }

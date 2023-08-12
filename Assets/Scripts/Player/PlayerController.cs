@@ -9,6 +9,10 @@ namespace SurvivorProto
         Vector2 m_movementInput;
 
         [SerializeField] PlayerData m_playerData;
+        [SerializeField] WeaponData m_weaponData;
+
+        Weapon m_weaponController;
+
         PlayerStats m_playerStats;
         PLAYER_STATES m_state;
 
@@ -23,6 +27,7 @@ namespace SurvivorProto
         private void Start()
         {
             m_playerStats = new PlayerStats(m_playerData);
+            m_weaponController = new Weapon(m_weaponData);
         }
 
         // Update is called once per frame
@@ -47,6 +52,6 @@ namespace SurvivorProto
         }
 
         public Vector2 Movement { get { return m_movementInput; } }
-
+        public Weapon WeaponController { get { return m_weaponController; } }
     }
 }
