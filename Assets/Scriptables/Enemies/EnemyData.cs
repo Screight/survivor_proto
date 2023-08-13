@@ -9,8 +9,10 @@ namespace SurvivorProto
     {
         [SerializeField] float m_movementSpeed;
         [SerializeField] int m_health;
+        [SerializeField] GameObject m_prefab;
 
         public float MovementSpeed { get { return m_movementSpeed; } }
         public int Health { get { return m_health; } }
+        public GameObject Prefab { get { return m_prefab; } }
     }
 }

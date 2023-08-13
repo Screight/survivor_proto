@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de30ccf4c0ea3ee4a91fd60b5df4e896, type: 3}
-  m_Name: _Follower_1
+  m_Script: {fileID: 11500000, guid: 8f8bf86d4d68b704daa127cc27d1e1df, type: 3}
+  m_Name: _DefaultWaveData_Level_3
   m_EditorClassIdentifier: 
-  m_movementSpeed: 3
-  m_health: 10
-  m_prefab: {fileID: 5658163467048574687, guid: 77a3bad6959b8544dbc76c01b5c6aadc, type: 3}
+  m_waveInfoList:
+  - m_enemyData: {fileID: 11400000, guid: 0d9c5401167424f4cb2059a9987cd6cf, type: 2}
+    m_chance: 1
+  m_frecuency: 1
+  m_duration: 60
