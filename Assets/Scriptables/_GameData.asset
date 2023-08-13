@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a4f75143c1f054da3ee7e84fecee16, type: 3}
+  m_Name: _GameData
+  m_EditorClassIdentifier: 
+  m_experienceCollectibleList:
+  - m_maxValue: 2
+    m_sprite: {fileID: 21300000, guid: b53990111a1852f4bbed9fd89eb12883, type: 3}
+  - m_maxValue: 10
+    m_sprite: {fileID: 21300000, guid: 0705aa1b5968ff647825a74da1ce4a23, type: 3}
+  - m_maxValue: 50
+    m_sprite: {fileID: 21300000, guid: 2e3c12c3127e169478656d768a62bf84, type: 3}
+  - m_maxValue: -1
+    m_sprite: {fileID: 21300000, guid: 91998c7d7481b6248bdeff9cd43418ea, type: 3}
+  m_experiencePrefab: {fileID: 0}
+  m_experienceCollectibleSpeed: 4

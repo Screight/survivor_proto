@@ -10,6 +10,20 @@ namespace SurvivorProto
         [SerializeField] Image m_reloadBarFillIMG;
         [SerializeField] TMPro.TextMeshProUGUI m_currentAmmoTMP;
 
+        [SerializeField] TMPro.TextMeshProUGUI m_levelTMP;
+        [SerializeField] Image m_experienceFillIMG;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            m_levelTMP.text = "Level  1";
+            m_experienceFillIMG.fillAmount = 0;
+        }
+
+        public void SetLevelTo(int p_level) { m_levelTMP.text = "Level  " + p_level; }
+
+        public void SetExpFillTo(float p_percentage) { m_experienceFillIMG.fillAmount = p_percentage; }
+
         public void SetCurrentAmmoTo(int p_ammo) {
             if(p_ammo < 0) { p_ammo = 0; }
             m_currentAmmoTMP.text = p_ammo.ToString();

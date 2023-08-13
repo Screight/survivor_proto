@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SurvivorProto
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, IDamagable
     {
         [SerializeField] EnemyData m_data;
 
@@ -35,6 +35,32 @@ namespace SurvivorProto
             Debug.Log("Player damaged!");
         }
 
+        public void TakeDamage(float p_amount)
+        {
+            Health -= p_amount;
+            if (Health <= 0) { OnDeath(); }
+        }
+        public void OnDeath()
+        {
+            Experience expController = LevelManager.Instance.ExperienceManager.ExperienceCollectiblePool.GetObject().GetComponent<Experience>();
+            expController.Initialize(m_data.Experience);
+            expController.transform.position = transform.position;
+            LevelManager.Instance.Spawner.ReturnEnemy(this);
+        }
+
+        public void RestoreHealth(float p_amount)
+        {
+            Debug.Log("Restore " + p_amount + " health.");
+        }
+
         public EnemyStats Stats { get { return m_stats; } }
+        public EnemyData Data { get { return m_data; } }
+
+
+        public float Health
+        {
+            get { return m_stats.Health; }
+            set { m_stats.Health = value; }
+        }
     }
 }

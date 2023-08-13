@@ -9,8 +9,10 @@ namespace SurvivorProto
     {
         [SerializeField] float m_movementSpeed;
         [SerializeField] int m_health;
+        [SerializeField] float m_collectionRange;
 
         public float MovementSpeed { get { return m_movementSpeed; } }
         public int Health { get { return m_health; } }
+        public float CollectionRange { get { return m_collectionRange; } }  
     }
 }

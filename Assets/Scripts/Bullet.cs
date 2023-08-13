@@ -25,5 +25,20 @@ namespace SurvivorProto
 
             m_rb.velocity = m_speed * direction;
         }
+
+        private void OnCollisionEnter2D(Collision2D p_collision)
+        {
+            IDamagable damagable = p_collision.gameObject.GetComponent<IDamagable>();
+            if(damagable == null) { return; }
+            damagable.TakeDamage(m_damage);
+        }
+
+        private void OnTriggerEnter2D(Collider2D p_collision)
+        {
+            IDamagable damagable = p_collision.gameObject.GetComponent<IDamagable>();
+            if (damagable == null) { return; }
+            damagable.TakeDamage(m_damage);
+        }
+
     }
 }

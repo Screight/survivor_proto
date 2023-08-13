@@ -37,6 +37,11 @@ namespace SurvivorProto
             return m_enemyPool[p_data].GetObject().GetComponent<Enemy>();
         }
 
+        public void ReturnEnemy(Enemy p_enemyData)
+        {
+            if (m_enemyPool.ContainsKey(p_enemyData.Data)) { m_enemyPool[p_enemyData.Data].AddObject(p_enemyData.gameObject); }
+        }
+
         void SpawnEnemies()
         {
             // Select a random enemy from a list taking into account their weights

@@ -51,7 +51,15 @@ namespace SurvivorProto
             m_rb.velocity = m_movementInput * m_playerStats.MovementSpeed;
         }
 
+        private void OnTriggerEnter2D(Collider2D p_collision)
+        {
+            ICollectible collectible = p_collision.GetComponent<ICollectible>();
+            if(collectible == null) { return; }
+            collectible.OnCollect();
+        }
+
         public Vector2 Movement { get { return m_movementInput; } }
         public Weapon WeaponController { get { return m_weaponController; } }
+        public PlayerStats Stats { get { return m_playerStats;} }
     }
 }
