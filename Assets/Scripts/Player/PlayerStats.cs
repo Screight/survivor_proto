@@ -40,9 +40,12 @@ namespace SurvivorProto
         public void GainExperience(float p_exp)
         {
             m_curExperience += p_exp;
-            if(m_curExperience >= m_maxExperience) { LevelUp(); }
-            
-            GUIManager.Instance.SetExpFillTo(m_curExperience / m_maxExperience);
+            CheckIfLevelUp();
+        }
+
+        public void CheckIfLevelUp()
+        {
+            if (m_curExperience >= m_maxExperience) { LevelUp(); }
         }
 
         public void LevelUp()
@@ -50,8 +53,10 @@ namespace SurvivorProto
             m_level++;
             m_curExperience = m_curExperience - m_maxExperience;
             GUIManager.Instance.SetLevelTo(m_level);
+            GUIManager.Instance.SetExpFillTo(m_curExperience / m_maxExperience);
             // SHOULD NOT BE HARDCODED
             m_maxExperience += 10;
+            CheckIfLevelUp();
         }
 
     }
