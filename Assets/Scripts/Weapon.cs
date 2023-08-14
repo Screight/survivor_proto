@@ -99,6 +99,7 @@ namespace SurvivorProto
         public int Projectiles { get { return m_projectiles; } set { m_projectiles = value; } }
         public float ReloadTime { get { return m_reloadTime; } set { m_reloadTime = value; } }
         public int Ammo { get { return m_maxAmmo; } set { m_maxAmmo = value; } }
+        public float BulletSpeed { get { return m_bulletSpeed; } set { m_bulletSpeed = value; } }
         public WeaponData Data { get { return m_data; } }
         #endregion
     }

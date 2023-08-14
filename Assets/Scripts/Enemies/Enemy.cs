@@ -32,7 +32,7 @@ namespace SurvivorProto
         private void OnTriggerEnter2D(Collider2D p_collision)
         {
             if (p_collision.GetComponent<PlayerController>() == null) { return; }
-            Debug.Log("Player damaged!");
+            PlayerController.Instance.TakeDamage(m_data.Damage);
         }
 
         public void TakeDamage(float p_amount)
@@ -52,11 +52,11 @@ namespace SurvivorProto
         {
             Debug.Log("Restore " + p_amount + " health.");
         }
-
+        public void SetVelocity(Vector2 p_direction, float p_speed) {
+            m_rb.velocity = p_direction * p_speed;
+        }
         public EnemyStats Stats { get { return m_stats; } }
         public EnemyData Data { get { return m_data; } }
-
-
         public float Health
         {
             get { return m_stats.Health; }

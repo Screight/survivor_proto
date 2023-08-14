@@ -28,6 +28,8 @@ namespace SurvivorProto
             {
                 m_upgradeIconModelList.Add(new UpgradeIconModel(MonoBehaviour.Instantiate(p_upgradeIconPrefab, m_gO.transform.Find("UpgradeList"))));
             }
+
+            m_gO.transform.Find("ChooseUpgradeBTN").GetComponent<Button>().onClick.AddListener(() => { LevelManager.Instance.UpgradeController.ChooseSelectedUpgrade(); });
         }
 
         public GameObject GameObject { get { return m_gO; } }
@@ -40,15 +42,29 @@ namespace SurvivorProto
                 m_upgradeIconModelList[i].IconIMG.sprite = p_upgradesList[i].Icon;
                 m_upgradeIconModelList[i].Data = p_upgradesList[i];
             }
-            SelectUpgradeIcon(0);
+            SetUpgradeIconToSelectBox(0);
         }
 
-        public void SelectUpgradeIcon(int p_index)
+        public void SetUpgradeIconToSelectBox(int p_index)
         {
             for (int i = 0; i < m_upgradeIconModelList.Count; i++)
             {
-                m_upgradeIconModelList[i].OutLineIMG.enabled = i == p_index;
-                m_upgradeDescriptionTMP.text = m_upgradeIconModelList[i].Data.Description;
+                UpgradeIconModel model = m_upgradeIconModelList[i];
+
+                if(i == p_index)
+                {
+                    m_upgradeTitleTMP.text = model.Data.Name;
+                    m_upgradeDescriptionTMP.text = model.Data.Description;
+                }
+            }
+        }
+
+        public void HighlightUpgradeIcon(int p_index)
+        {
+            for (int i = 0; i < m_upgradeIconModelList.Count; i++)
+            {
+                UpgradeIconModel model = m_upgradeIconModelList[i];
+                model.OutLineIMG.enabled = i == p_index;
             }
         }
     }
@@ -70,5 +86,6 @@ namespace SurvivorProto
         public Image OutLineIMG { get { return m_outLineIMG; } }
         public Image IconIMG { get { return m_iconIMG; } }
         public UpgradeData Data { get { return m_data; } set { m_data = value; } }
+        public GameObject GameObject { get { return m_gO; } }
     }
 }

@@ -11,8 +11,13 @@ namespace SurvivorProto
         [SerializeField] int m_health;
         [SerializeField] float m_collectionRange;
 
+        [SerializeField] float m_repulseOnHitRange;
+        [SerializeField] float m_repulseOnHitForce;
+
         public float MovementSpeed { get { return m_movementSpeed; } }
         public int Health { get { return m_health; } }
-        public float CollectionRange { get { return m_collectionRange; } }  
+        public float CollectionRange { get { return m_collectionRange; } }
+        public float RepulseOnHitRange { get { return m_repulseOnHitRange; } }
+        public float RepulseOnHitForce { get { return m_repulseOnHitForce; } }
     }
 }

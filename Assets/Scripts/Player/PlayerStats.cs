@@ -7,8 +7,8 @@ namespace SurvivorProto
     public class PlayerStats
     {
         float m_movementSpeed;
-        float m_health;
-        float m_maxHealth;
+        int m_health;
+        int m_maxHealth;
 
         int m_level;
         float m_curExperience;
@@ -31,7 +31,8 @@ namespace SurvivorProto
 
         public float CollectionRange { get { return m_collectionRange; } }
         public float MovementSpeed { get { return m_movementSpeed; } set { m_movementSpeed = value; } }
-        public float Health { get { return m_health; } set { m_health = value; } }
+        public int Health { get { return m_health; } set { m_health = value; } }
+        public int MaxHealth { get { return m_maxHealth; } set { m_maxHealth = value; } }
         public int Level {
             get { return m_level; }
             set { m_level = value; }
@@ -40,12 +41,14 @@ namespace SurvivorProto
         public void GainExperience(float p_exp)
         {
             m_curExperience += p_exp;
+            GUIManager.Instance.SetExpFillTo(m_curExperience / m_maxExperience);
             CheckIfLevelUp();
         }
 
-        public void CheckIfLevelUp()
+        public bool CheckIfLevelUp()
         {
-            if (m_curExperience >= m_maxExperience) { LevelUp(); }
+            if (m_curExperience >= m_maxExperience) { LevelUp(); return true; }
+            return false;
         }
 
         public void LevelUp()

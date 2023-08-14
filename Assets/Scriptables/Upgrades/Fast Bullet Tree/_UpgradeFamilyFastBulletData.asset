@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de30ccf4c0ea3ee4a91fd60b5df4e896, type: 3}
-  m_Name: _Follower_2
+  m_Script: {fileID: 11500000, guid: c2d5600f634c3584ea5447dda1b9b038, type: 3}
+  m_Name: _UpgradeFamilyFastBulletData
   m_EditorClassIdentifier: 
-  m_movementSpeed: 6
-  m_health: 5
-  m_prefab: {fileID: 5658163467048574687, guid: c6c0c583fd0c72840af75d54721886a0, type: 3}
-  m_experience: 1
+  m_upgradeList:
+  - {fileID: 11400000, guid: dffc4ab8c4bd78b41bee362da830991a, type: 2}
+  - {fileID: 11400000, guid: 48a3dc1b2c5ba6e4d9ff100519c8a3f8, type: 2}

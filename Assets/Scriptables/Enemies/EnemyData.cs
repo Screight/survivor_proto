@@ -12,9 +12,12 @@ namespace SurvivorProto
         [SerializeField] GameObject m_prefab;
         [SerializeField] int m_experience;
 
+        [SerializeField] int m_damage = 1;
+
         public float MovementSpeed { get { return m_movementSpeed; } }
         public int Health { get { return m_health; } }
         public GameObject Prefab { get { return m_prefab; } }
         public int Experience { get { return m_experience; } }
+        public int Damage { get { return m_damage; } }
     }
 }

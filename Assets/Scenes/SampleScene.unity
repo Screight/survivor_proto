@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_gameData: {fileID: 11400000, guid: 67fec7ba7cf5fa54d9bf8a9abe10fde7, type: 2}
+  m_GUIData: {fileID: 11400000, guid: 9ff9632f6ceab3d4a82ac347184193ca, type: 2}
 --- !u!1 &199133631
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,10 +525,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 199133632}
   - {fileID: 1561229408}
+  - {fileID: 199133632}
   - {fileID: 1352652844}
   - {fileID: 899695465}
+  - {fileID: 1424471167}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -548,11 +550,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea3d51ed5375334b9c7eef54ffc4736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_upgradeIconPrefab: {fileID: 5859242190738079047, guid: 3031830637934de4c9e432282d7f3092, type: 3}
   m_reloadBarFillIMG: {fileID: 2126580040}
   m_currentAmmoTMP: {fileID: 616500799}
   m_levelTMP: {fileID: 355408146}
   m_experienceFillIMG: {fileID: 1426629021}
-  m_upgradeIconPrefab: {fileID: 5859242190738079047, guid: 3031830637934de4c9e432282d7f3092, type: 3}
+  m_healthIconPrefab: {fileID: 6347245055514230991, guid: e14f6ad6916118e41bd35b7df8226e7e, type: 3}
+  m_healthIconParentTr: {fileID: 1424471167}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,7 +899,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -938,7 +942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 782990581}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1751,6 +1755,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391943333}
   m_CullTransparentMesh: 1
+--- !u!1 &1424471166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1424471167}
+  - component: {fileID: 1424471168}
+  m_Layer: 5
+  m_Name: HealthContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1424471167
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424471166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 460752160}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -120}
+  m_SizeDelta: {x: 0, y: 100}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1424471168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424471166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 10
+    m_Right: 10
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 50, y: 50}
+  m_Spacing: {x: 10, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &1426629019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,7 +1905,7 @@ GameObject:
   - component: {fileID: 1531387475}
   - component: {fileID: 1531387476}
   - component: {fileID: 1531387477}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1928,6 +1993,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerData: {fileID: 11400000, guid: 83bed0955fecacf4b8d05792d04ecaca, type: 2}
   m_weaponData: {fileID: 11400000, guid: 1260e7fd45aa9b749a3560382d89496a, type: 2}
+  m_enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!50 &1531387476
 Rigidbody2D:
   serializedVersion: 4
@@ -2079,7 +2147,7 @@ GameObject:
   - component: {fileID: 1791385406}
   - component: {fileID: 1791385405}
   - component: {fileID: 1791385407}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ItemCollector
   m_TagString: Untagged
   m_Icon: {fileID: 0}

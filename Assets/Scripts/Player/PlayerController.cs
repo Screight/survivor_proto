@@ -4,12 +4,14 @@ using UnityEngine;
 
 namespace SurvivorProto
 {
-    public class PlayerController : Singleton<PlayerController>
+    public class PlayerController : Singleton<PlayerController>, IDamagable
     {
         Vector2 m_movementInput;
 
         [SerializeField] PlayerData m_playerData;
         [SerializeField] WeaponData m_weaponData;
+
+        [SerializeField] LayerMask m_enemyLayerMask;
 
         Weapon m_weaponController;
 
@@ -22,10 +24,6 @@ namespace SurvivorProto
         {
             base.Awake();
             m_rb = GetComponent<Rigidbody2D>();
-        }
-
-        private void Start()
-        {
             m_playerStats = new PlayerStats(m_playerData);
             m_weaponController = new Weapon(m_weaponData);
         }
@@ -54,12 +52,46 @@ namespace SurvivorProto
         private void OnTriggerEnter2D(Collider2D p_collision)
         {
             ICollectible collectible = p_collision.GetComponent<ICollectible>();
-            if(collectible == null) { return; }
+            if (collectible == null) { return; }
             collectible.OnCollect();
+        }
+
+        public void TakeDamage(float p_amount)
+        {
+            Health -= (int)p_amount;
+            GUIManager.Instance.SetHealthTo((int)Health);
+
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, 3, Vector2.one, 0, m_enemyLayerMask);
+
+            foreach(RaycastHit2D hit in hits)
+            {
+                Enemy enemy = hit.transform.GetComponent<Enemy>();
+                if(enemy == null) { return; }
+                Vector2 direction = -(transform.position - enemy.transform.position).normalized;
+                enemy.SetVelocity(direction, m_playerData.RepulseOnHitForce);
+            }
+
+        }
+
+        public void RestoreHealth(float p_amount)
+        {
+            Health += (int)p_amount;
+            GUIManager.Instance.SetHealthTo((int)Health);
+        }
+
+        public void OnDeath()
+        {
+            throw new System.NotImplementedException();
         }
 
         public Vector2 Movement { get { return m_movementInput; } }
         public Weapon WeaponController { get { return m_weaponController; } }
-        public PlayerStats Stats { get { return m_playerStats;} }
+        public PlayerStats Stats { get { return m_playerStats; } }
+
+        public float Health
+        {
+            get { return m_playerStats.Health; }
+            set { m_playerStats.Health = (int)value; }
+        }
     }
 }

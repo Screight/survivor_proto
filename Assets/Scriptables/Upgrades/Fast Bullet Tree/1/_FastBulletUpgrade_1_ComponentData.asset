@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d5600f634c3584ea5447dda1b9b038, type: 3}
-  m_Name: _UpgradeFamilyDamageData
+  m_Script: {fileID: 11500000, guid: 8e80a11b2241a894ab7022cd9af46c20, type: 3}
+  m_Name: _FastBulletUpgrade_1_ComponentData
   m_EditorClassIdentifier: 
-  m_upgradeList:
-  - {fileID: 11400000, guid: 653249f51a0538c4fa79b4a0d89659c7, type: 2}
+  m_description: Bullet Speed +{bulletSpeed}%
+  m_bulletSpeed: 0.35
