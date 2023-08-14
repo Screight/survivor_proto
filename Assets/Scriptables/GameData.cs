@@ -11,8 +11,13 @@ namespace SurvivorProto
         [SerializeField] GameObject m_experiencePrefab;
         [SerializeField] float m_experienceCollectibleSpeed;
 
+        [SerializeField] List<UpgradeFamilyData> m_upgradeFamilyList;
+
         public List<ExperienceCollectible> ExperienceCollectibleList { get { return m_experienceCollectibleList; } }
         public float ExperienceCollectibleSpeed { get { return m_experienceCollectibleSpeed; } }
+
+        public List<UpgradeFamilyData> UpgradeFamilyList { get { return m_upgradeFamilyList; } }
+
     }
 
     [System.Serializable]

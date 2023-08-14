@@ -56,7 +56,8 @@ namespace SurvivorProto
             GUIManager.Instance.SetExpFillTo(m_curExperience / m_maxExperience);
             // SHOULD NOT BE HARDCODED
             m_maxExperience += 10;
-            CheckIfLevelUp();
+            
+            LevelManager.Instance.HandleLevelUp();
         }
 
     }
