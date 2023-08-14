@@ -65,4 +65,7 @@ public class Timer
     public void ClearEvents() { OnTickEvent = null; OnFinishedEvent = null; }
     public float Period { get { return m_period; } set { m_period = value; } }
     public float CurrentTime { get { return m_currentTime; } }
+    public void Restart() { m_currentTime = 0; m_isPaused = false; }
+    public void Pause() { m_isPaused = true; }
+    public void Stop() { m_currentTime = -1; m_isPaused = true; }
 }

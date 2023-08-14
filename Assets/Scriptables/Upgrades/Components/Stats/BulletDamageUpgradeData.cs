@@ -12,7 +12,7 @@ namespace SurvivorProto
 
         public override void ApplyUpgrade()
         {
-            PlayerController.Instance.WeaponController.BaseDamage += m_bulletDamage;
+            PlayerController.Instance.WeaponController.BaseDamage *= 1 + m_bulletDamage;
         }
 
         public override string ParsedDescription()

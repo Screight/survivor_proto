@@ -38,6 +38,8 @@ namespace SurvivorProto
             IDamagable damagable = p_collision.gameObject.GetComponent<IDamagable>();
             if (damagable == null) { return; }
             damagable.TakeDamage(m_damage);
+
+            LevelManager.Instance.SplashTextPool.GetObject().GetComponent<SplashText>().SetUp(p_collision.transform.position, (int)m_damage); ;
         }
 
     }

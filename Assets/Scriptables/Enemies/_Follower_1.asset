@@ -15,4 +15,5 @@ MonoBehaviour:
   m_movementSpeed: 3
   m_health: 10
   m_prefab: {fileID: 5658163467048574687, guid: 77a3bad6959b8544dbc76c01b5c6aadc, type: 3}
-  m_experience: 1
+  m_experience: 10
+  m_damage: 1

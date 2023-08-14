@@ -15,7 +15,7 @@ public class ObjectPool
 
     Transform m_parentTr;
 
-    public ObjectPool(int p_numberOfInitialObjects, int p_maxNumberOfObjects, int p_numberOfObjectsToCreateWhenVoid, GameObject p_prefab)
+    public ObjectPool(int p_numberOfInitialObjects, int p_maxNumberOfObjects, int p_numberOfObjectsToCreateWhenVoid, GameObject p_prefab, Transform p_parentTr = null)
     {
         m_numberOfObjectsCreated = 0;
         m_maxNumberOfObjects = p_maxNumberOfObjects;
@@ -28,8 +28,15 @@ public class ObjectPool
             m_maxNumberOfObjects = p_numberOfInitialObjects;
         }
 
-        GameObject gO = new GameObject("(ObjectPool)" + $"{m_prefab.name}");
-        m_parentTr = gO.transform;
+        if(p_parentTr == null)
+        {
+            GameObject gO = new GameObject("(ObjectPool)" + $"{m_prefab.name}");
+            m_parentTr = gO.transform;
+        }
+        else
+        {
+            m_parentTr = p_parentTr;
+        }
 
         CreateNewObjects(p_numberOfInitialObjects);
     }

@@ -12,7 +12,7 @@ namespace SurvivorProto
 
         public override void ApplyUpgrade()
         {
-            PlayerController.Instance.WeaponController.BulletSpeed += m_bulletSpeed;
+            PlayerController.Instance.WeaponController.BulletSpeed *= 1 + m_bulletSpeed;
         }
 
         public override string ParsedDescription()
