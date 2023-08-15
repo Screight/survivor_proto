@@ -15,7 +15,9 @@ namespace SurvivorProto
         int m_maxAmmo;
         float m_reloadTime;
         float m_bulletSpeed;
+        float m_bulletLifeTime;
 
+        int m_piercing;
         int m_currentAmmo;
 
         ObjectPool m_bulletPool;
@@ -35,13 +37,18 @@ namespace SurvivorProto
             m_currentAmmo = m_maxAmmo;
             m_reloadTime = m_data.ReloadTime;
             m_bulletSpeed = m_data.BulletSpeed;
-
-            m_bulletPool = new ObjectPool(100, 500, 50, m_data.BulletPrefab);
+            m_piercing = m_data.Piercing;
+            m_bulletLifeTime = m_data.BulletLifeTime;
 
             float shootingPeriod = 1 / m_fireRate;
             m_shootingTimer = new Timer(shootingPeriod, false, true, null, new OnFinishedDelegate(TryShooting), true);
 
             m_GUIManager = GUIManager.Instance;
+        }
+
+        public void InitializePool() {
+            if(m_bulletPool != null) { return; }
+            m_bulletPool = new ObjectPool(100, 500, 50, m_data.BulletPrefab);
         }
 
         public ObjectPool BulletPool { get { return m_bulletPool; } }
@@ -100,6 +107,8 @@ namespace SurvivorProto
         public float ReloadTime { get { return m_reloadTime; } set { m_reloadTime = value; } }
         public int Ammo { get { return m_maxAmmo; } set { m_maxAmmo = value; } }
         public float BulletSpeed { get { return m_bulletSpeed; } set { m_bulletSpeed = value; } }
+        public int Piercing { get { return m_piercing; } set { m_piercing = value; } }
+        public float BulletLifeTime { get { return m_bulletLifeTime; } set { m_bulletLifeTime = value; } }
         public WeaponData Data { get { return m_data; } }
         #endregion
     }

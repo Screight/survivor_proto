@@ -13,14 +13,14 @@ namespace SurvivorProto
 
         private void Awake()
         {
-            m_timer = new Timer(m_timeToDisappear, false, false, null, Disable, false);
             m_damageTMP = GetComponent<TMPro.TextMeshProUGUI>();
+            m_timer = new Timer(m_timeToDisappear, false, false, null, Disable, false);
         }
 
         private void OnEnable() {
-            m_timer.Restart();
+            m_timer?.Restart();
         }
-        private void OnDisable() { m_timer.Stop(); }
+        private void OnDisable() { m_timer?.Stop(); }
 
         private void Disable()
         {

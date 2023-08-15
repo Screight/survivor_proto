@@ -15,6 +15,8 @@ namespace SurvivorProto
         [SerializeField] int m_ammo;
         [SerializeField] float m_reloadTime;
         [SerializeField] float m_bulletSpeed;
+        [SerializeField] int m_piercing = 1;
+        [SerializeField] float m_bulletLifeTime;
 
         [SerializeField] GameObject m_bulletPrefab;
 
@@ -25,6 +27,8 @@ namespace SurvivorProto
         public float ReloadTime { get { return m_reloadTime; } }
         public int Ammo { get { return m_ammo; } }
         public float BulletSpeed { get { return m_bulletSpeed; } }
+        public int Piercing { get { return m_piercing; } }
+        public float BulletLifeTime { get { return m_bulletLifeTime; } }
         public GameObject BulletPrefab { get { return m_bulletPrefab; } }
 
     }

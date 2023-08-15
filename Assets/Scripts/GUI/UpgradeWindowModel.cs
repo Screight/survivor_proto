@@ -14,6 +14,8 @@ namespace SurvivorProto
 
         List<UpgradeIconModel> m_upgradeIconModelList;
 
+        int m_numberOfUpgrades;
+
         public UpgradeWindowModel(GameObject p_gO, GameObject p_upgradeIconPrefab)
         {
             m_gO = p_gO;
@@ -23,8 +25,10 @@ namespace SurvivorProto
             m_upgradeTitleTMP = parentTr.Find("UpgradeTitleTMP").GetComponent<TMPro.TextMeshProUGUI>();
             m_upgradeDescriptionTMP = parentTr.Find("UpgradeDescriptionTMP").GetComponent<TMPro.TextMeshProUGUI>();
 
+            m_numberOfUpgrades = GameManager.Instance.GameData.NumberOfUpgradesToChooseFrom;
+
             m_upgradeIconModelList = new List<UpgradeIconModel>();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < m_numberOfUpgrades; i++)
             {
                 m_upgradeIconModelList.Add(new UpgradeIconModel(MonoBehaviour.Instantiate(p_upgradeIconPrefab, m_gO.transform.Find("UpgradeList"))));
             }
@@ -37,7 +41,7 @@ namespace SurvivorProto
         public void SetUp(List<UpgradeData> p_upgradesList)
         {
             m_gO.SetActive(true);
-            for(int i = 0; i < p_upgradesList.Count && i < 3; i++)
+            for(int i = 0; i < p_upgradesList.Count && i < m_numberOfUpgrades; i++)
             {
                 m_upgradeIconModelList[i].IconIMG.sprite = p_upgradesList[i].Icon;
                 m_upgradeIconModelList[i].Data = p_upgradesList[i];

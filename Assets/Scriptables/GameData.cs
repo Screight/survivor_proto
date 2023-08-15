@@ -8,14 +8,18 @@ namespace SurvivorProto
     public class GameData : ScriptableObject
     {
         [SerializeField] List<ExperienceCollectible> m_experienceCollectibleList;
-        [SerializeField] GameObject m_experiencePrefab;
         [SerializeField] float m_experienceCollectibleSpeed;
 
         [SerializeField] List<UpgradeFamilyData> m_upgradeFamilyList;
 
+        [SerializeField] float m_splashTextDMGLifeTime = 1;
+        [SerializeField] int m_numberOfUpgradesToChooseFrom;
+
+        public float SplashTextDMGLifeTime { get { return m_splashTextDMGLifeTime; } }
+        public int NumberOfUpgradesToChooseFrom { get { return m_numberOfUpgradesToChooseFrom; } }
+
         public List<ExperienceCollectible> ExperienceCollectibleList { get { return m_experienceCollectibleList; } }
         public float ExperienceCollectibleSpeed { get { return m_experienceCollectibleSpeed; } }
-
         public List<UpgradeFamilyData> UpgradeFamilyList { get { return m_upgradeFamilyList; } }
 
     }

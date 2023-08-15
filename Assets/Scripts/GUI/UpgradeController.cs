@@ -12,6 +12,7 @@ namespace SurvivorProto
         int m_selectedUpgradeDataIndex;
 
         List<UpgradeFamilyData> m_upgradeList;
+        int m_numberOfUpgradesToChooseFrom;
 
         public UpgradeController()
         {
@@ -22,6 +23,7 @@ namespace SurvivorProto
             });
 
             m_upgradeWindowModel = GUIManager.Instance.UpgradeWindowModel;
+            m_numberOfUpgradesToChooseFrom = GameManager.Instance.GameData.NumberOfUpgradesToChooseFrom;
         }
 
         List<UpgradeFamilyData> GetAvailableUpgradeFamily()
@@ -49,7 +51,7 @@ namespace SurvivorProto
                 return;
             }
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < m_numberOfUpgradesToChooseFrom; i++)
             {
                 int index = Random.Range(0, upgradeFamilyDataList.Count);
                 UpgradeFamilyData upgradeFamily = upgradeFamilyDataList[index];

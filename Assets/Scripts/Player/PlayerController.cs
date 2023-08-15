@@ -26,6 +26,7 @@ namespace SurvivorProto
             m_rb = GetComponent<Rigidbody2D>();
             m_playerStats = new PlayerStats(m_playerData);
             m_weaponController = new Weapon(m_weaponData);
+            m_weaponController.InitializePool();
         }
 
         // Update is called once per frame
