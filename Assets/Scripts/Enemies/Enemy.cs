@@ -40,7 +40,10 @@ namespace SurvivorProto
             PlayerController.Instance.TakeDamage(m_data.Damage);
         }
 
-        public void Initialize() { if (m_stats != null) { Health = m_stats.MaxHealth; } }
+        public void Initialize() { if (m_stats != null) {
+                EnemyManager.Instance.AddEnemy(this);
+                Health = m_stats.MaxHealth; }
+        }
 
         public void TakeDamage(float p_amount)
         {
@@ -56,6 +59,7 @@ namespace SurvivorProto
             expController.Initialize(m_data.Experience);
             expController.transform.position = transform.position;
             LevelManager.Instance.Spawner.ReturnEnemy(this);
+            EnemyManager.Instance.RemoveEnemy(this);
         }
 
         public void RestoreHealth(float p_amount)

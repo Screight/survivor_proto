@@ -18,7 +18,7 @@ namespace SurvivorProto
         float m_bulletLifeTime;
         float m_spread;
         float m_bulletSize;
-
+        int m_bounce;
         int m_piercing;
         int m_currentAmmo;
 
@@ -43,6 +43,7 @@ namespace SurvivorProto
             m_bulletLifeTime = m_data.BulletLifeTime;
             m_spread = m_data.Spread;
             m_bulletSize = 1;
+            m_bounce = m_data.Bounce;
 
             float shootingPeriod = 1 / m_fireRate;
             m_shootingTimer = new Timer(shootingPeriod, false, true, null, new OnFinishedDelegate(TryShooting), true);
@@ -132,6 +133,7 @@ namespace SurvivorProto
         public float BulletLifeTime { get { return m_bulletLifeTime; } set { m_bulletLifeTime = value; } }
         public float BulletSize { get { return m_bulletSize; } set { m_bulletSize = value; } }
         public float Spread { get { return m_spread; } set { m_spread = value; } }
+        public int Bounce { get { return m_bounce; } set { m_bounce = value; } }
         public WeaponData Data { get { return m_data; } }
         #endregion
     }

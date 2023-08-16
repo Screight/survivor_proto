@@ -8,12 +8,12 @@ namespace SurvivorProto
     public class WaveData : ScriptableObject
     {
         [SerializeField] List<EnemyWaveInfo> m_waveInfoList;
-        [SerializeField] int m_frecuency;
+        [SerializeField] float m_frecuency;
         [Tooltip("Wave duration in seconds")]
         [SerializeField] int m_duration;
 
         public List<EnemyWaveInfo> WaveInfoList { get { return m_waveInfoList; } }
-        public int Frecuency { get { return m_frecuency; } }
+        public float Frecuency { get { return m_frecuency; } }
         public int Duration { get { return m_duration; } }
     }
 

@@ -19,12 +19,14 @@ namespace SurvivorProto
         private void Start()
         {
             m_level = 0;
-            m_spawnEnemiesTimer = new Timer(m_spawnLevelData.WaveDataList[m_level].Frecuency, false, true, null, SpawnEnemies, true);
+            m_spawnEnemiesTimer = new Timer(1/m_spawnLevelData.WaveDataList[m_level].Frecuency, false, true, null, SpawnEnemies, true);
 
             m_enemyPool = new Dictionary<EnemyData, ObjectPool>();
             // TODO:
             //  ONLY CREATE NEW POOLS IF THE ENEMY BEHAVIOUR IS REALLLY DIFFERENT
             //  IF NOT GET THE ENEMY FROM THE VERY SAME POOL AND CHANGE THE SPRITE AND STATS
+
+            SpawnEnemies();
         }
 
         Enemy GetEnemy(EnemyData p_data)

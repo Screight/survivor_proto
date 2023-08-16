@@ -1,4 +1,5 @@
 using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,12 +36,15 @@ namespace SurvivorProto
         float m_damage;
 
         int m_objectsPierced;
+        int m_bounceCount;
 
         public void Initialize(Vector2 p_direction, float p_speed, float p_damage)
         {
             m_speed = p_speed;
             m_damage = p_damage;
             m_objectsPierced = 0;
+            m_bounceCount = 0;
+
             transform.localScale = Vector3.one * m_weaponController.BulletSize;
 
             m_rb.velocity = m_speed * p_direction;
@@ -70,8 +74,37 @@ namespace SurvivorProto
 
             if(m_objectsPierced >= m_weaponController.Piercing)
             {
-                ReturnBulletToPool();
+                if(m_bounceCount < m_weaponController.Bounce) { Bounce(p_collision.transform); }
+                else { ReturnBulletToPool(); }
             }
+        }
+
+        void Bounce(Transform p_collidedTr)
+        {
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, 5.0f, Vector2.one, 0, LayerMask.NameToLayer("Damagable"));
+
+            Transform objectiveTr;
+
+            if(hits.Length != 0) { objectiveTr = hits[Random.Range(0, hits.Length)].transform; }
+            else {
+                List<Enemy> enemyList = EnemyManager.Instance.EnemyList;
+                if(enemyList.Count != 0)
+                {
+                    objectiveTr = enemyList[Random.Range(0, enemyList.Count)].transform;
+                }
+                else { objectiveTr = p_collidedTr; }
+            }
+
+            Vector2 direction;
+
+            if (objectiveTr == p_collidedTr)
+            {
+                float randomAngle = Random.Range(0, 2 * Mathf.PI);
+                direction = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle));
+            }
+            else { direction = (objectiveTr.position - transform.position).normalized; }
+
+            m_rb.velocity = m_speed * direction;
         }
 
         void ReturnBulletToPool() { m_weaponController.BulletPool.AddObject(gameObject); }
