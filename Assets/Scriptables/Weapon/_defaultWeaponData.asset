@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: _defaultWeaponData
   m_EditorClassIdentifier: 
   m_baseDamage: 20
-  m_recoil: 0
+  m_recoil: 3
   m_fireRate: 4
   m_projectiles: 1
-  m_ammo: 6
+  m_ammo: 16
   m_reloadTime: 1
   m_bulletSpeed: 10
+  m_piercing: 1
+  m_bulletLifeTime: 1
+  m_spread: 15
   m_bulletPrefab: {fileID: 3562582260977030662, guid: 39bdff80a78604a4a9cff4047f0ed311, type: 3}

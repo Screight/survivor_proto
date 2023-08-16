@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbd27c20746d564fb35e138e25e2dca, type: 3}
-  m_Name: _UpgradeDamage_1_Data
+  m_Name: _UpgradeDamage_2_Data
   m_EditorClassIdentifier: 
-  m_icon: {fileID: 21300000, guid: e415bae2a7311614ba31b681bc6a2730, type: 3}
-  m_name: Splinter
+  m_icon: {fileID: 21300000, guid: a919085b0e9f59148a375ce8da6b4f35, type: 3}
+  m_name: Big Shot
   m_upgradesList:
-  - {fileID: 11400000, guid: e39192ead9c03c2488c47aa1f658df23, type: 2}
+  - {fileID: 11400000, guid: a2a6e1c32dce00e45b76f04115a3e637, type: 2}
+  - {fileID: 11400000, guid: d5b7160fa26ac2644956d6b89c60cc50, type: 2}

@@ -16,6 +16,8 @@ namespace SurvivorProto
         float m_reloadTime;
         float m_bulletSpeed;
         float m_bulletLifeTime;
+        float m_spread;
+        float m_bulletSize;
 
         int m_piercing;
         int m_currentAmmo;
@@ -39,6 +41,8 @@ namespace SurvivorProto
             m_bulletSpeed = m_data.BulletSpeed;
             m_piercing = m_data.Piercing;
             m_bulletLifeTime = m_data.BulletLifeTime;
+            m_spread = m_data.Spread;
+            m_bulletSize = 1;
 
             float shootingPeriod = 1 / m_fireRate;
             m_shootingTimer = new Timer(shootingPeriod, false, true, null, new OnFinishedDelegate(TryShooting), true);
@@ -77,12 +81,29 @@ namespace SurvivorProto
         public void Shoot()
         {
             m_currentAmmo--;
-            Bullet bullet = m_bulletPool.GetObject().GetComponent<Bullet>();
 
             Vector2 targetPos = Camera.main.ScreenToWorldPoint(InputManager.Instance.MousePosition);
 
-            bullet.Initialize(targetPos, m_bulletSpeed, m_baseDamage);
-            bullet.transform.position = PlayerController.Instance.transform.position;
+            Vector2 direction = (targetPos - (Vector2)PlayerController.Instance.transform.position).normalized;
+            float m_initialAngle = (m_projectiles - 1) / 2 * m_spread;
+
+            // EVEN AN ODD NUMBER OF BULLETS HAVE A SLIGHTLY OFF ANGLE TO LOOK SIMMETRICAL
+            if (m_projectiles % 2 == 0) { m_initialAngle += m_spread / 2; }
+            // CALCULATE DIRECTION OF FIRST BULLET BY ROTATING THE MAIN DIRECTION
+            direction = Quaternion.AngleAxis(m_initialAngle, Vector3.forward) * direction;
+
+            for(int i = 0; i < m_projectiles; i++)
+            {
+                Bullet bullet = m_bulletPool.GetObject().GetComponent<Bullet>();
+                if(i > 0)
+                {// ROTATE THE INITIAL DIRECTION BY THE SPREAD AMOUNT TO GET EACH BULLET DIRECTION
+                    direction = Quaternion.AngleAxis(-m_spread, Vector3.forward) * direction;
+                }
+                
+                bullet.Initialize(direction, m_bulletSpeed, m_baseDamage);
+                bullet.transform.position = PlayerController.Instance.transform.position;
+            }
+            
             m_GUIManager.SetCurrentAmmoTo(m_currentAmmo);
         }
 
@@ -109,6 +130,8 @@ namespace SurvivorProto
         public float BulletSpeed { get { return m_bulletSpeed; } set { m_bulletSpeed = value; } }
         public int Piercing { get { return m_piercing; } set { m_piercing = value; } }
         public float BulletLifeTime { get { return m_bulletLifeTime; } set { m_bulletLifeTime = value; } }
+        public float BulletSize { get { return m_bulletSize; } set { m_bulletSize = value; } }
+        public float Spread { get { return m_spread; } set { m_spread = value; } }
         public WeaponData Data { get { return m_data; } }
         #endregion
     }

@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbd27c20746d564fb35e138e25e2dca, type: 3}
-  m_Name: _UpgradeDamage_1_Data
+  m_Name: _UpgradeDamage_3_Data
   m_EditorClassIdentifier: 
-  m_icon: {fileID: 21300000, guid: e415bae2a7311614ba31b681bc6a2730, type: 3}
-  m_name: Splinter
+  m_icon: {fileID: 21300000, guid: f1423499ca1d046448f846f7cbcb2a4e, type: 3}
+  m_name: Reaper Rounds
   m_upgradesList:
-  - {fileID: 11400000, guid: e39192ead9c03c2488c47aa1f658df23, type: 2}
+  - {fileID: 11400000, guid: 70bcce38cf40dc54988a00eb7142ca16, type: 2}
+  - {fileID: 11400000, guid: 7fc4eca95402be64095e470040b738dc, type: 2}
+  - {fileID: 11400000, guid: ff8ed53ccbd0154419b2e59451475ac8, type: 2}

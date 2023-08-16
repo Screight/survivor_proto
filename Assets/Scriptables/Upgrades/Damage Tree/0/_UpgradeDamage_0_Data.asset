@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbd27c20746d564fb35e138e25e2dca, type: 3}
   m_Name: _UpgradeDamage_0_Data
   m_EditorClassIdentifier: 
-  m_icon: {fileID: 21300000, guid: b36e57bf759b08147844e7c2062da516, type: 3}
+  m_icon: {fileID: 21300000, guid: acef59c7fbccf714d9d955fb70d25693, type: 3}
   m_name: Power Shot
   m_upgradesList:
-  - {fileID: 11400000, guid: a2a6e1c32dce00e45b76f04115a3e637, type: 2}
+  - {fileID: 11400000, guid: 9f1f99445f0994d4e814f7b3b58bd81d, type: 2}
+  - {fileID: 11400000, guid: a635d091e620fb64fa6224bc11458c83, type: 2}

@@ -6,6 +6,7 @@ namespace SurvivorProto
 {
     public abstract class UpgradeComponentData : ScriptableObject
     {
+        [TextArea(5, 5)]
         [SerializeField] protected string m_description;
 
         public abstract void ApplyUpgrade();

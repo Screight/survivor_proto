@@ -4,12 +4,17 @@ using UnityEngine;
 
 namespace SurvivorProto
 {
+    public delegate void OnBulletHitDamagable(IDamagable p_enemy, Bullet p_bullet);
+
     public class Bullet : MonoBehaviour
     {
         Rigidbody2D m_rb;
         Weapon m_weaponController;
 
         Timer m_maxLifeTimeTimer;
+
+        static event OnBulletHitDamagable m_onBulletHitDamagableEvent;
+        public static OnBulletHitDamagable OnBulletHitDamagable { get { return m_onBulletHitDamagableEvent; } set { m_onBulletHitDamagableEvent = value; } }
 
         private void Awake()
         {
@@ -31,22 +36,14 @@ namespace SurvivorProto
 
         int m_objectsPierced;
 
-        public void Initialize(Vector2 p_targetPos, float p_speed, float p_damage)
+        public void Initialize(Vector2 p_direction, float p_speed, float p_damage)
         {
             m_speed = p_speed;
             m_damage = p_damage;
             m_objectsPierced = 0;
+            transform.localScale = Vector3.one * m_weaponController.BulletSize;
 
-            Vector2 direction = (p_targetPos - (Vector2)PlayerController.Instance.transform.position).normalized;
-
-            m_rb.velocity = m_speed * direction;
-        }
-
-        private void OnCollisionEnter2D(Collision2D p_collision)
-        {
-            IDamagable damagable = p_collision.gameObject.GetComponent<IDamagable>();
-            if(damagable == null) { return; }
-            damagable.TakeDamage(m_damage);
+            m_rb.velocity = m_speed * p_direction;
         }
 
         private void OnTriggerEnter2D(Collider2D p_collision)
@@ -55,6 +52,14 @@ namespace SurvivorProto
             if (damagable == null) { return; }
             m_objectsPierced++;
             damagable.TakeDamage(m_damage);
+            m_onBulletHitDamagableEvent?.Invoke(damagable, this);
+
+            // ENEMY KNOCKBACK
+            Enemy enemy = damagable as Enemy;
+            if(enemy != null) {
+                Vector2 direction = (enemy.transform.position - transform.position).normalized;
+                enemy.SetVelocity(direction, m_weaponController.Recoil);
+            }
 
             GameObject gO = LevelManager.Instance.SplashTextPool.GetObject();
 
@@ -70,6 +75,8 @@ namespace SurvivorProto
         }
 
         void ReturnBulletToPool() { m_weaponController.BulletPool.AddObject(gameObject); }
+
+        public int ObjectsPierced { get { return m_objectsPierced; } set { m_objectsPierced = value; } }
 
     }
 }

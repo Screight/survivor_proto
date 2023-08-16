@@ -63,6 +63,7 @@ namespace SurvivorProto
             }
 
             Enemy enemy = GetEnemy(enemyData);
+            enemy.Initialize();
             enemy.transform.position = GetRandomPosition();
         }
 
