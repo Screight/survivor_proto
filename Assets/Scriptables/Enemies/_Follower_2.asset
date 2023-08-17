@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: _Follower_2
   m_EditorClassIdentifier: 
   m_movementSpeed: 6
-  m_health: 1
+  m_health: 100
   m_prefab: {fileID: 5658163467048574687, guid: c6c0c583fd0c72840af75d54721886a0, type: 3}
   m_experience: 10
   m_damage: 1

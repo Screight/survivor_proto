@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbd27c20746d564fb35e138e25e2dca, type: 3}
-  m_Name: _UpgradeFastBullet_1_Data
+  m_Name: _UpgradeFastBullet_2_Data
   m_EditorClassIdentifier: 
-  m_icon: {fileID: 21300000, guid: 54ec540cdacf5994fbe197fe9084d628, type: 3}
-  m_name: Penetration
+  m_icon: {fileID: 21300000, guid: 28ff62db32730d943bd4afe06fa75717, type: 3}
+  m_name: Sniper
   m_upgradesList:
-  - {fileID: 11400000, guid: 480d850cff3fa6544a960943c2ebe62c, type: 2}
-  - {fileID: 11400000, guid: f87c43b9c72a39243a312bc9cc05e7e8, type: 2}
+  - {fileID: 11400000, guid: 48ef14ab59bd04041803f9d59dd4c85d, type: 2}
+  - {fileID: 11400000, guid: 5777fef2198f4fb42af42d7f06ebba78, type: 2}

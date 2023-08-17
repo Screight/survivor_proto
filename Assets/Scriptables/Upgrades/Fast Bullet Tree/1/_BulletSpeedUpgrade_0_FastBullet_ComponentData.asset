@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e80a11b2241a894ab7022cd9af46c20, type: 3}
-  m_Name: _FastBulletUpgrade_0_ComponentData
+  m_Name: _BulletSpeedUpgrade_0_FastBullet_ComponentData
   m_EditorClassIdentifier: 
   m_description: Bullet Speed +{bulletSpeed}%
-  m_bulletSpeed: 0.3
+  m_bulletSpeed: 0.15

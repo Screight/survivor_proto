@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c538b1bbc4fed347b37e136bea2fe73, type: 3}
   m_Name: _defaultWeaponData
   m_EditorClassIdentifier: 
-  m_baseDamage: 20
+  m_baseDamage: 50
   m_recoil: 3
   m_fireRate: 4
   m_projectiles: 1
-  m_ammo: 16
+  m_ammo: 99
   m_reloadTime: 1
   m_bulletSpeed: 10
   m_piercing: 1
   m_bulletLifeTime: 1
   m_spread: 15
+  m_bounce: 1
   m_bulletPrefab: {fileID: 3562582260977030662, guid: 39bdff80a78604a4a9cff4047f0ed311, type: 3}

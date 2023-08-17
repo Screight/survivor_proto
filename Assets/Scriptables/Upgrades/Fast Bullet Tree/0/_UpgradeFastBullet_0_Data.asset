@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbd27c20746d564fb35e138e25e2dca, type: 3}
   m_Name: _UpgradeFastBullet_0_Data
   m_EditorClassIdentifier: 
-  m_icon: {fileID: 21300000, guid: b7ca39a9a2db3ec4a8bbd9c8da44efda, type: 3}
+  m_icon: {fileID: 21300000, guid: 8ed38e5e0cd731848bf330ee125a9411, type: 3}
   m_name: Take Aim
   m_upgradesList:
   - {fileID: 11400000, guid: b0bf694d55338dc48a3f217f20d4d280, type: 2}
+  - {fileID: 11400000, guid: a00967ba3e99c9043bf879bd167766cc, type: 2}

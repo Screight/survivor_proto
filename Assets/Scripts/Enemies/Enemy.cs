@@ -5,6 +5,7 @@ using UnityEngine;
 namespace SurvivorProto
 {
     public delegate void OnEnemyDeathDelegate(Enemy p_enemy);
+    public delegate void OnEnemyDamagedDelegate(Enemy p_enemy);
 
     public class Enemy : MonoBehaviour, IDamagable
     {
@@ -14,9 +15,6 @@ namespace SurvivorProto
         EnemyAI m_AIController;
 
         Rigidbody2D m_rb;
-
-        event OnEnemyDeathDelegate m_onEnemyDeathEvent;
-        public OnEnemyDeathDelegate OnEnemyDeathEvent { get { return m_onEnemyDeathEvent; } }
 
         private void Awake()
         {
@@ -49,13 +47,13 @@ namespace SurvivorProto
         {
             Health -= p_amount;
             if (Health <= 0) { OnDeath(); }
+            EnemyManager.Instance.OnEnemyDamagedEvent?.Invoke(this);
         }
 
         public void OnDeath()
         {
             Experience expController = LevelManager.Instance.ExperienceManager.ExperienceCollectiblePool.GetObject().GetComponent<Experience>();
-            m_onEnemyDeathEvent?.Invoke(this);
-            EnemyManager.Instance.OnEnemyGeneralDeath(this);
+            EnemyManager.Instance.OnEnemyGeneralDeathEvent?.Invoke(this);
             expController.Initialize(m_data.Experience);
             expController.transform.position = transform.position;
             LevelManager.Instance.Spawner.ReturnEnemy(this);
