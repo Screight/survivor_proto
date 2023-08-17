@@ -6,6 +6,8 @@ namespace SurvivorProto
 {
     public class LevelManager : Singleton<LevelManager>
     {
+        [SerializeField] LayerMask m_damagableMask;
+        public LayerMask DamagableMask { get { return m_damagableMask; } }
         [SerializeField] GameObject m_experiencePrefab;
         ExperienceManager m_experienceManager;
         Spawner m_spawner;
@@ -23,6 +25,8 @@ namespace SurvivorProto
             m_experienceManager = new ExperienceManager(m_experiencePrefab);
             m_spawner = transform.GetChild(0).GetComponent<Spawner>();
             m_splashTextPool = new ObjectPool(50, 300, 50, m_splashTextPrefab, m_splashTextParentTr);
+
+            Bullet.OnBulletHitDamagable = null;
         }
 
         private void Start()

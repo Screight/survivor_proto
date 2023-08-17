@@ -24,6 +24,9 @@ namespace SurvivorProto
             m_maxLifeTimeTimer = new Timer(m_weaponController.BulletLifeTime, false, false, null, ReturnBulletToPool, false);
         }
 
+        private void OnDestroy()
+        { m_onBulletHitDamagableEvent = null; }
+
         private void OnEnable() {
             m_maxLifeTimeTimer?.Restart();
         }
@@ -81,10 +84,11 @@ namespace SurvivorProto
 
         void Bounce(Transform p_collidedTr)
         {
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, 5.0f, Vector2.one, 0, LayerMask.NameToLayer("Damagable"));
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, 5.0f, Vector2.one, 0, LevelManager.Instance.DamagableMask);
 
             Transform objectiveTr;
 
+            // GET A RANDOM CLOSE ENEMY OR A RANDOM ONE IF NONE IS CLOSE ENOUGH
             if(hits.Length != 0) { objectiveTr = hits[Random.Range(0, hits.Length)].transform; }
             else {
                 List<Enemy> enemyList = EnemyManager.Instance.EnemyList;
@@ -98,7 +102,7 @@ namespace SurvivorProto
             Vector2 direction;
 
             if (objectiveTr == p_collidedTr)
-            {
+            {// IF THERE IS NO ENEMY AVAILABLE, SET A RANDOM DIRECTION
                 float randomAngle = Random.Range(0, 2 * Mathf.PI);
                 direction = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle));
             }
