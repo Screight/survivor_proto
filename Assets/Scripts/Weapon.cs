@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace SurvivorProto
 {
+    public delegate void OnFireWeapon(Weapon p_weapon);
     public class Weapon
     {
         WeaponData m_data;
@@ -27,6 +28,10 @@ namespace SurvivorProto
 
         GUIManager m_GUIManager;
 
+        event OnFireWeapon m_onFireBulletEvent;
+        public OnFireWeapon OnFireBulletEvent
+        { get { return m_onFireBulletEvent; } set { m_onFireBulletEvent = value; } }
+
         public Weapon(WeaponData p_data)
         {
             m_data = p_data;
@@ -44,6 +49,7 @@ namespace SurvivorProto
             m_spread = m_data.Spread;
             m_bulletSize = 1;
             m_bounce = m_data.Bounce;
+
 
             float shootingPeriod = 1 / m_fireRate;
             m_shootingTimer = new Timer(shootingPeriod, false, true, null, new OnFinishedDelegate(TryShooting), true);
@@ -82,6 +88,7 @@ namespace SurvivorProto
         public void Shoot()
         {
             m_currentAmmo--;
+            m_onFireBulletEvent?.Invoke(this);
 
             Vector2 targetPos = Camera.main.ScreenToWorldPoint(InputManager.Instance.MousePosition);
 
@@ -127,7 +134,8 @@ namespace SurvivorProto
         public float FireRate { get { return m_fireRate; } set { m_fireRate = value; } }
         public int Projectiles { get { return m_projectiles; } set { m_projectiles = value; } }
         public float ReloadTime { get { return m_reloadTime; } set { m_reloadTime = value; } }
-        public int Ammo { get { return m_maxAmmo; } set { m_maxAmmo = value; } }
+        public int MaxAmmo { get { return m_maxAmmo; } set { m_maxAmmo = value; } }
+        public int Ammo { get { return m_currentAmmo; } set { m_currentAmmo = value; } }
         public float BulletSpeed { get { return m_bulletSpeed; } set { m_bulletSpeed = value; } }
         public int Piercing { get { return m_piercing; } set { m_piercing = value; } }
         public float BulletLifeTime { get { return m_bulletLifeTime; } set { m_bulletLifeTime = value; } }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SurvivorProto
 {
-    [CreateAssetMenu(fileName = "_PierceKilledEnemiesUpgradeData", menuName = "SurvivorProto/Upgrade/Behaviours/PierceKilledEnemies", order = 1)]
+    [CreateAssetMenu(fileName = "_PierceKilledEnemiesUpgradeData", menuName = "SurvivorProto/Upgrade/Bullet/PierceKilledEnemies", order = 1)]
     public class PierceKilledEnemiesUpgradeData : UpgradeComponentData
     {
         public override void ApplyUpgrade()

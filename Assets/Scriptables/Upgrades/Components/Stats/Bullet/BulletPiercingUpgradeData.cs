@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SurvivorProto
 {
-    [CreateAssetMenu(fileName = "_BulletPiercingUpgradeData", menuName = "SurvivorProto/Upgrade/Stats/BulletPiercing", order = 1)]
+    [CreateAssetMenu(fileName = "_BulletPiercingUpgradeData", menuName = "SurvivorProto/Upgrade/Bullet/BulletPiercing", order = 1)]
     public class BulletPiercingUpgradeData : UpgradeComponentData
     {
         [SerializeField] int m_bulletPiercing;

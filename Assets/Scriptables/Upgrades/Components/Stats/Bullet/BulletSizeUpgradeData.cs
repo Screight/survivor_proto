@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SurvivorProto
 {
-    [CreateAssetMenu(fileName = "_BulletSizeUpgradeData", menuName = "SurvivorProto/Upgrade/Stats/BulletSize", order = 1)]
+    [CreateAssetMenu(fileName = "_BulletSizeUpgradeData", menuName = "SurvivorProto/Upgrade/Weapon/BulletSize", order = 1)]
     public class BulletSizeUpgradeData : UpgradeComponentData
     {
         [Range(0,1)]
