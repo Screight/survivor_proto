@@ -19,7 +19,8 @@ namespace SurvivorProto
         private void Start()
         {
             m_level = 0;
-            m_spawnEnemiesTimer = new Timer(1/m_spawnLevelData.WaveDataList[m_level].Frecuency, false, true, null, SpawnEnemies, true);
+            m_spawnEnemiesTimer = new Timer(1/(float)m_spawnLevelData.WaveDataList[m_level].Frecuency, false, true, null, SpawnEnemies, true);
+            m_waveDurationTimer = new Timer(m_spawnLevelData.WaveDataList[m_level].Duration, false, true, null, ChangeToNextWave, true);
 
             m_enemyPool = new Dictionary<EnemyData, ObjectPool>();
             // TODO:
@@ -27,6 +28,15 @@ namespace SurvivorProto
             //  IF NOT GET THE ENEMY FROM THE VERY SAME POOL AND CHANGE THE SPRITE AND STATS
 
             SpawnEnemies();
+        }
+
+        private void OnDestroy()
+        {
+            if (!TimerManager.IsNull)
+            {
+                TimerManager.Instance?.RemoveTimer(m_spawnEnemiesTimer);
+                TimerManager.Instance?.RemoveTimer(m_waveDurationTimer);
+            }
         }
 
         Enemy GetEnemy(EnemyData p_data)
@@ -43,7 +53,6 @@ namespace SurvivorProto
         {
             if (m_enemyPool.ContainsKey(p_enemyData.Data)) { m_enemyPool[p_enemyData.Data].AddObject(p_enemyData.gameObject); }
         }
-
         void SpawnEnemies()
         {
             // Select a random enemy from a list taking into account their weights
@@ -67,6 +76,15 @@ namespace SurvivorProto
             Enemy enemy = GetEnemy(enemyData);
             enemy.Initialize();
             enemy.transform.position = GetRandomPosition();
+        }
+
+        void ChangeToNextWave()
+        {
+            WaveData data = m_spawnLevelData.WaveDataList[m_level];
+            if(data == null) { return; }
+            m_level++;
+            m_spawnEnemiesTimer.Period = 1 / data.Frecuency;
+            m_waveDurationTimer.Period = data.Duration;
         }
 
         Vector2 GetRandomPosition()
