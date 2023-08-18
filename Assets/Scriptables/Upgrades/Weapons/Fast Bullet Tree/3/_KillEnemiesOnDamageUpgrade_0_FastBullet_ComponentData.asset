@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: _KillEnemiesOnDamageUpgrade_0_FastBullet_ComponentData
   m_EditorClassIdentifier: 
   m_description: Automatically kill enemies below {healthPercentage}% HP
-  m_healthPercentage: 0.5
+  m_healthPercentage: 0.2

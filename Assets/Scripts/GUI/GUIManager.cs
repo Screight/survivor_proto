@@ -9,6 +9,7 @@ namespace SurvivorProto
     {
         [SerializeField] GameObject m_upgradeIconPrefab;
         UpgradeWindowModel m_upgradeWindowModel;
+        [SerializeField] TMPro.TextMeshProUGUI m_levelTimerTMP;
 
         [Header("Weapon")]
         [SerializeField] Image m_reloadBarFillIMG;
@@ -62,7 +63,11 @@ namespace SurvivorProto
                 m_healthIMGList[m_healthIMGList.Count - 1].sprite = p_areNewHealthFull ? data.FullHealthSprite : data.EmptyHealthSprite;
             }
         }
-
+        public void SetLevelTimerTo(int p_minutes, int p_seconds) {
+            string secondsTxt = p_seconds.ToString();
+            if(secondsTxt.Length == 1) { secondsTxt = "0" + secondsTxt; }
+            m_levelTimerTMP.text = p_minutes + ":" + secondsTxt;
+        }
         public void SetLevelTo(int p_level) { m_levelTMP.text = "Level  " + p_level; }
 
         public void SetExpFillTo(float p_percentage) { m_experienceFillIMG.fillAmount = p_percentage; }

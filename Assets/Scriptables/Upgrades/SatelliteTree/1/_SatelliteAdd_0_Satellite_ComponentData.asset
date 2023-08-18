@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: _SatelliteAdd_0_Satellite_ComponentData
   m_EditorClassIdentifier: 
   m_description: Number of Satellite +{numberOfSatellites}
-  m_numberOfSatellites: 1
+  m_numberOfSatellites: 2

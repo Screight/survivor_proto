@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_upgradeList:
   - {fileID: 11400000, guid: 18cd84743a76d9944a90c6b3dd3fec06, type: 2}
-  - {fileID: 11400000, guid: bc44150c5e793e04c9a998559c058e26, type: 2}
   - {fileID: 11400000, guid: 4977d21a1b57ac3458446014e32d67df, type: 2}
+  - {fileID: 11400000, guid: bc44150c5e793e04c9a998559c058e26, type: 2}
   - {fileID: 11400000, guid: 092232697b536244ba87d3c5b299fbd6, type: 2}

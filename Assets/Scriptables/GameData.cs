@@ -7,12 +7,16 @@ namespace SurvivorProto
     [CreateAssetMenu(fileName = "_GameData", menuName = "SurvivorProto/GameData", order = 1)]
     public class GameData : ScriptableObject
     {
+        [Tooltip("Given in minutes")]
+        [SerializeField] int m_levelDuration;
+        [SerializeField] float m_splashTextDMGLifeTime = 1;
+
+        [Header("Experience")]
         [SerializeField] List<ExperienceCollectible> m_experienceCollectibleList;
         [SerializeField] float m_experienceCollectibleSpeed;
 
+        [Header("Upgrades")]
         [SerializeField] List<UpgradeFamilyData> m_upgradeFamilyList;
-
-        [SerializeField] float m_splashTextDMGLifeTime = 1;
         [SerializeField] int m_numberOfUpgradesToChooseFrom;
 
         public float SplashTextDMGLifeTime { get { return m_splashTextDMGLifeTime; } }
@@ -22,6 +26,7 @@ namespace SurvivorProto
         public float ExperienceCollectibleSpeed { get { return m_experienceCollectibleSpeed; } }
         public List<UpgradeFamilyData> UpgradeFamilyList { get { return m_upgradeFamilyList; } }
 
+        public int LevelDuration { get { return m_levelDuration; } }
     }
 
     [System.Serializable]

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a4f75143c1f054da3ee7e84fecee16, type: 3}
   m_Name: _GameData
   m_EditorClassIdentifier: 
+  m_levelDuration: 5
+  m_splashTextDMGLifeTime: 1
   m_experienceCollectibleList:
   - m_maxValue: 2
     m_sprite: {fileID: 21300000, guid: b53990111a1852f4bbed9fd89eb12883, type: 3}
@@ -26,5 +28,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 39d553481bcfc5a49897072cb7675d3f, type: 2}
   - {fileID: 11400000, guid: 63618b84287175e4f9ead078ddb3092f, type: 2}
   - {fileID: 11400000, guid: 7e8340eddc9fd644ab9eae3b11dc0680, type: 2}
-  m_splashTextDMGLifeTime: 1
   m_numberOfUpgradesToChooseFrom: 3

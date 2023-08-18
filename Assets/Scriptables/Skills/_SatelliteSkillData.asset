@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_damage: 10
   m_numberOfTurnsPerSecond: 0.25
-  m_numberOfSatellites: 3
+  m_numberOfSatellites: 1
   m_size: 1
   m_radius: 3
   m_recoil: 3

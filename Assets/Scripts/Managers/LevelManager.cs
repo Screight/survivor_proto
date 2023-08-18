@@ -22,6 +22,8 @@ namespace SurvivorProto
 
         Dictionary<Type, ISkill> m_skillDictionary;
 
+        Timer m_levelTimer;
+
         protected override void Awake()
         {
             base.Awake();
@@ -36,6 +38,20 @@ namespace SurvivorProto
         private void Start()
         {
             m_upgradeController = new UpgradeController();
+            m_levelTimer = new Timer(60 * GameManager.Instance.GameData.LevelDuration, true, false, HandleLevelTimer, HandleEndOfLevelTimer, true);
+        }
+
+        public void HandleLevelTimer(float p_deltaTime)
+        {
+            float time = m_levelTimer.Period - m_levelTimer.CurrentTime;
+            int minutes = (int)(time / 60);
+            int seconds = (int)(time % 60);
+            GUIManager.Instance.SetLevelTimerTo(minutes, seconds);
+        }
+
+        public void HandleEndOfLevelTimer()
+        {
+            Time.timeScale = 0;
         }
 
         public void HandleLevelUp()
