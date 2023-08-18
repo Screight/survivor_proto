@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b9a017a1d7d7f40a845c22aa3e32fc, type: 3}
-  m_Name: _SpreadUpgrade_1_FastBullet_ComponentData
+  m_Script: {fileID: 11500000, guid: 773a54be93203cb449d317e27373880c, type: 3}
+  m_Name: _SatelliteSpeed_1_Satellite_ComponentData
   m_EditorClassIdentifier: 
-  m_description: Spread {spread}
-  m_spread: 0
+  m_description: Rotation speed +{speedMultiplier}%
+  m_speedMultiplier: 0.3

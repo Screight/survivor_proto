@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b07244924a71384aa06dab298c5dc21, type: 3}
+  m_Name: _SatelliteUnlock_0_Satellite_ComponentData
+  m_EditorClassIdentifier: 
+  m_description: Creates a sphere that orbit around the player that deals {satelliteDamage}
+    damage
+  m_skillData: {fileID: 11400000, guid: 4194330b014b78f4ab5bc0a718c5c6b9, type: 2}
+  m_satellitePrefab: {fileID: 4555800939800492435, guid: 3578c56aecae5d142971d067b1137773, type: 3}

@@ -7,7 +7,7 @@ namespace SurvivorProto
     public interface IDamagable
     {
         public float Health { get; set; }
-        public void TakeDamage(float p_amount);
+        public void TakeDamage(float p_amount, Vector2 p_pos);
         public void RestoreHealth(float p_amount);
         public void OnDeath();
     }

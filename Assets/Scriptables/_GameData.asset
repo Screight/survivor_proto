@@ -25,6 +25,6 @@ MonoBehaviour:
   m_upgradeFamilyList:
   - {fileID: 11400000, guid: 39d553481bcfc5a49897072cb7675d3f, type: 2}
   - {fileID: 11400000, guid: 63618b84287175e4f9ead078ddb3092f, type: 2}
-  - {fileID: 11400000, guid: 99c22abb2c9848a4abba866e94f59942, type: 2}
+  - {fileID: 11400000, guid: 7e8340eddc9fd644ab9eae3b11dc0680, type: 2}
   m_splashTextDMGLifeTime: 1
   m_numberOfUpgradesToChooseFrom: 3

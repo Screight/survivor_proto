@@ -16,7 +16,7 @@ MonoBehaviour:
   m_recoil: 3
   m_fireRate: 4
   m_projectiles: 1
-  m_ammo: 99
+  m_ammo: 999
   m_reloadTime: 1
   m_bulletSpeed: 10
   m_piercing: 1

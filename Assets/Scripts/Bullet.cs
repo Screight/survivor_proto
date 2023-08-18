@@ -58,7 +58,7 @@ namespace SurvivorProto
             IDamagable damagable = p_collision.gameObject.GetComponent<IDamagable>();
             if (damagable == null) { return; }
             m_objectsPierced++;
-            damagable.TakeDamage(m_damage);
+            damagable.TakeDamage(m_damage, p_collision.transform.position);
             m_onBulletHitDamagableEvent?.Invoke(damagable, this);
 
             // ENEMY KNOCKBACK
@@ -66,13 +66,6 @@ namespace SurvivorProto
             if(enemy != null) {
                 Vector2 direction = (enemy.transform.position - transform.position).normalized;
                 enemy.SetVelocity(direction, m_weaponController.Recoil);
-            }
-
-            GameObject gO = LevelManager.Instance.SplashTextPool.GetObject();
-
-            if(gO != null)
-            {
-                gO.GetComponent<SplashText>().SetUp(p_collision.transform.position, (int)m_damage);
             }
 
             if(m_objectsPierced >= m_weaponController.Piercing)
@@ -84,7 +77,7 @@ namespace SurvivorProto
 
         void Bounce(Transform p_collidedTr)
         {
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, 5.0f, Vector2.one, 0, LevelManager.Instance.DamagableMask);
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, 20.0f, Vector2.one, 0, LevelManager.Instance.DamagableMask);
 
             Transform objectiveTr;
 

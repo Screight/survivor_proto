@@ -7,9 +7,8 @@ namespace SurvivorProto
     [CreateAssetMenu(fileName = "_WeaponSpreadUpgradeData", menuName = "SurvivorProto/Upgrade/Weapon/Spread", order = 1)]
     public class WeaponSpreadUpgradeData : UpgradeComponentData
     {
-        [Range(0,1)]
         [Tooltip("How much bullets are spread when weapon is fired")]
-        [SerializeField] float m_spread;
+        [SerializeField] int m_spread;
 
         public override void ApplyUpgrade()
         {

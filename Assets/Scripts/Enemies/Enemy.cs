@@ -35,7 +35,7 @@ namespace SurvivorProto
         private void OnTriggerEnter2D(Collider2D p_collision)
         {
             if (p_collision.GetComponent<PlayerController>() == null) { return; }
-            PlayerController.Instance.TakeDamage(m_data.Damage);
+            PlayerController.Instance.TakeDamage(m_data.Damage, p_collision.transform.position);
         }
 
         public void Initialize() { if (m_stats != null) {
@@ -43,8 +43,11 @@ namespace SurvivorProto
                 Health = m_stats.MaxHealth; }
         }
 
-        public void TakeDamage(float p_amount)
+        public void TakeDamage(float p_amount, Vector2 p_pos)
         {
+            GameObject gO = LevelManager.Instance.SplashTextPool.GetObject();
+            if (gO != null) { gO.GetComponent<SplashText>().SetUp(p_pos, (int)p_amount); }
+
             Health -= p_amount;
             if (Health <= 0) { OnDeath(); }
             EnemyManager.Instance.OnEnemyDamagedEvent?.Invoke(this);

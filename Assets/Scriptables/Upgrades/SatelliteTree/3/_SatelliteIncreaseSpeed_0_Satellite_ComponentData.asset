@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8b230d685b5f440bb67cf74e236a78, type: 3}
+  m_Name: _SatelliteIncreaseSpeed_0_Satellite_ComponentData
+  m_EditorClassIdentifier: 
+  m_description: The rotation speed of the Satellite gradually increases up to x{speedMultiplier},
+    then return to the original rotation speed again.
+  m_period: 3
+  m_speedMultiplier: 3
