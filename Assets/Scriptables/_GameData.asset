@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a4f75143c1f054da3ee7e84fecee16, type: 3}
   m_Name: _GameData
   m_EditorClassIdentifier: 
+  m_enemyPrefabList:
+  - m_type: 0
+    m_prefab: {fileID: 5658163467048574687, guid: 77a3bad6959b8544dbc76c01b5c6aadc, type: 3}
   m_levelDuration: 5
   m_splashTextDMGLifeTime: 1
   m_experienceCollectibleList:

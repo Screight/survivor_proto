@@ -57,7 +57,7 @@ namespace SurvivorProto
             collectible.OnCollect();
         }
 
-        public void TakeDamage(float p_amount, Vector2 p_pos)
+        public void TakeDamage(float p_amount)
         {
             Health -= (int)p_amount;
             GUIManager.Instance.SetHealthTo((int)Health);

@@ -69,7 +69,7 @@ namespace SurvivorProto
         {
             IDamagable damagable = p_collision.gameObject.GetComponent<IDamagable>();
             if (damagable == null) { return; }
-            damagable.TakeDamage(m_damage, p_collision.transform.position);
+            damagable.TakeDamage(m_damage);
 
             // ENEMY KNOCKBACK
             Enemy enemy = damagable as Enemy;

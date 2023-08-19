@@ -58,7 +58,7 @@ namespace SurvivorProto
             IDamagable damagable = p_collision.gameObject.GetComponent<IDamagable>();
             if (damagable == null) { return; }
             m_objectsPierced++;
-            damagable.TakeDamage(m_damage, p_collision.transform.position);
+            damagable.TakeDamage(m_damage);
             m_onBulletHitDamagableEvent?.Invoke(damagable, this);
 
             // ENEMY KNOCKBACK

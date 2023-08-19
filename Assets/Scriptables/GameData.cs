@@ -7,7 +7,7 @@ namespace SurvivorProto
     [CreateAssetMenu(fileName = "_GameData", menuName = "SurvivorProto/GameData", order = 1)]
     public class GameData : ScriptableObject
     {
-
+        [SerializeField] List<EnemyTypePrefab> m_enemyPrefabList;
 
         [Tooltip("Given in minutes")]
         [SerializeField] int m_levelDuration;
@@ -20,6 +20,15 @@ namespace SurvivorProto
         [Header("Upgrades")]
         [SerializeField] List<UpgradeFamilyData> m_upgradeFamilyList;
         [SerializeField] int m_numberOfUpgradesToChooseFrom;
+
+        public GameObject GetEnemyTypePrefab(ENEMY_TYPE p_type)
+        {
+            foreach (EnemyTypePrefab element in m_enemyPrefabList)
+            {
+                if (element.Type == p_type) { return element.Prefab; }
+            }
+            return null;
+        }
 
         public float SplashTextDMGLifeTime { get { return m_splashTextDMGLifeTime; } }
         public int NumberOfUpgradesToChooseFrom { get { return m_numberOfUpgradesToChooseFrom; } }
@@ -39,5 +48,15 @@ namespace SurvivorProto
 
         public int MaxValue { get { return m_maxValue; } }
         public Sprite Sprite { get { return m_sprite; } }
+    }
+
+    [System.Serializable]
+    public struct EnemyTypePrefab
+    {
+        [SerializeField] ENEMY_TYPE m_type;
+        [SerializeField] GameObject m_prefab;
+
+        public ENEMY_TYPE Type { get { return m_type; } }
+        public GameObject Prefab { get { return m_prefab; } }
     }
 }

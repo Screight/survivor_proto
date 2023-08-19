@@ -14,7 +14,7 @@ namespace SurvivorProto
         Timer m_spawnEnemiesTimer;
         Timer m_waveDurationTimer;
 
-        Dictionary<EnemyData, ObjectPool> m_enemyPool;
+        Dictionary<ENEMY_TYPE, ObjectPool> m_enemyPool;
 
         private void Start()
         {
@@ -22,7 +22,7 @@ namespace SurvivorProto
             m_spawnEnemiesTimer = new Timer(1/(float)m_spawnLevelData.WaveDataList[m_level].Frecuency, false, true, null, SpawnEnemies, true);
             m_waveDurationTimer = new Timer(m_spawnLevelData.WaveDataList[m_level].Duration, false, true, null, ChangeToNextWave, true);
 
-            m_enemyPool = new Dictionary<EnemyData, ObjectPool>();
+            m_enemyPool = new Dictionary<ENEMY_TYPE, ObjectPool>();
             // TODO:
             //  ONLY CREATE NEW POOLS IF THE ENEMY BEHAVIOUR IS REALLLY DIFFERENT
             //  IF NOT GET THE ENEMY FROM THE VERY SAME POOL AND CHANGE THE SPRITE AND STATS
@@ -39,19 +39,20 @@ namespace SurvivorProto
             }
         }
 
-        Enemy GetEnemy(EnemyData p_data)
+        Enemy GetEnemy(ENEMY_TYPE p_data)
         {
             if (m_enemyPool.ContainsKey(p_data)) {
                 return m_enemyPool[p_data].GetObject().GetComponent<Enemy>();
             }
 
-            m_enemyPool.Add(p_data, new ObjectPool(50, 300, 50, p_data.Prefab));
+            m_enemyPool.Add(p_data, new ObjectPool(50, 300, 50, GameManager.Instance.GameData.GetEnemyTypePrefab(p_data)));
             return m_enemyPool[p_data].GetObject().GetComponent<Enemy>();
         }
 
-        public void ReturnEnemy(Enemy p_enemyData)
+        public void ReturnEnemy(Enemy p_enemy)
         {
-            if (m_enemyPool.ContainsKey(p_enemyData.Data)) { m_enemyPool[p_enemyData.Data].AddObject(p_enemyData.gameObject); }
+            ENEMY_TYPE enemyType = p_enemy.Data.Type;
+            if (m_enemyPool.ContainsKey(enemyType)) { m_enemyPool[enemyType].AddObject(p_enemy.gameObject); }
         }
         void SpawnEnemies()
         {
@@ -73,8 +74,8 @@ namespace SurvivorProto
                 }
             }
 
-            Enemy enemy = GetEnemy(enemyData);
-            enemy.Initialize();
+            Enemy enemy = GetEnemy(enemyData.Type);
+            enemy.Initialize(enemyData);
             enemy.transform.position = GetRandomPosition();
         }
 
