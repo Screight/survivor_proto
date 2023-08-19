@@ -13,6 +13,7 @@ namespace SurvivorProto
 
         [Header("Weapon")]
         [SerializeField] Image m_reloadBarFillIMG;
+        [SerializeField] TMPro.TextMeshProUGUI m_currentAmmoTargetTMP;
         [SerializeField] TMPro.TextMeshProUGUI m_currentAmmoTMP;
 
         [Header("Experience")]
@@ -72,9 +73,15 @@ namespace SurvivorProto
 
         public void SetExpFillTo(float p_percentage) { m_experienceFillIMG.fillAmount = p_percentage; }
 
-        public void SetCurrentAmmoTo(int p_ammo) {
+        public void SetCurrentAmmoTo(int p_ammo, int p_maxAmmo) {
             if(p_ammo < 0) { p_ammo = 0; }
-            m_currentAmmoTMP.text = p_ammo.ToString();
+            m_currentAmmoTargetTMP.text = p_ammo.ToString();
+            string curAmmoTxt = p_ammo.ToString();
+            while(curAmmoTxt.Length < 3) { curAmmoTxt = "0" + curAmmoTxt; }
+            string maxAmmoTxt = p_maxAmmo.ToString();
+            while (maxAmmoTxt.Length < 3) { maxAmmoTxt = "0" + maxAmmoTxt; }
+
+            m_currentAmmoTMP.text = curAmmoTxt + "/" + maxAmmoTxt;
         }
         public void SetReloadBarTo(bool p_isActive) { m_reloadBarFillIMG.gameObject.transform.parent.gameObject.SetActive(p_isActive); }
         public void SetReloadBarFillTo(float p_fillAmount)

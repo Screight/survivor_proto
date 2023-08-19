@@ -112,7 +112,7 @@ namespace SurvivorProto
                 bullet.transform.position = PlayerController.Instance.transform.position;
             }
             
-            m_GUIManager.SetCurrentAmmoTo(m_currentAmmo);
+            m_GUIManager.SetCurrentAmmoTo(m_currentAmmo, m_maxAmmo);
         }
 
         void OnFinishReload() {
@@ -124,7 +124,7 @@ namespace SurvivorProto
             m_shootingTimer.AddOnFinishedEvent(TryShooting);
 
             m_GUIManager.SetReloadBarTo(false);
-            m_GUIManager.SetCurrentAmmoTo(m_currentAmmo);
+            m_GUIManager.SetCurrentAmmoTo(m_currentAmmo, m_maxAmmo);
             Shoot();
         }
 
