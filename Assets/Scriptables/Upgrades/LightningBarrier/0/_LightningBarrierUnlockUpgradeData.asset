@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e06bff72d759a419fc1ca003b7ecbb, type: 3}
+  m_Name: _LightningBarrierUnlockUpgradeData
+  m_EditorClassIdentifier: 
+  m_description: Creates a permanent field of electricity around the player that
+    periodically deals {lightningBarrierDamage} damage to enemies within the area
+    of effect.
+  m_skillData: {fileID: 11400000, guid: 3e7e8eea09f7bb24699326342f87eaf7, type: 2}
+  m_lightningBarrierPrefab: {fileID: 5049760953929337772, guid: ea860f2d243b2d84c95d927ba61bf236, type: 3}

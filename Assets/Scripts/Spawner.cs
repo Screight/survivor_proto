@@ -62,7 +62,8 @@ namespace SurvivorProto
             float addedChance = 0;
             float randomNumber = Random.Range(0.0f, 1.0f);
 
-            List<EnemyWaveInfo> enemyWaveInfoList = m_spawnLevelData.WaveDataList[m_level].WaveInfoList;
+            if(m_level > m_spawnLevelData.WaveDataList.Count) { return;}
+            List<EnemyWaveInfo> enemyWaveInfoList = m_spawnLevelData.WaveDataList[m_level]?.WaveInfoList;
 
             foreach (EnemyWaveInfo enemyWaveInfo in enemyWaveInfoList)
             {

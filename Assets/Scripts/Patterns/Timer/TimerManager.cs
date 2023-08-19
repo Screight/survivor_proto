@@ -9,10 +9,12 @@ public class TimerManager : Singleton<TimerManager>
     private void Update()
     {
         float deltaTime = Time.deltaTime;
-        m_timerList.ForEach((Timer timer) =>
+
+        for (int i = 0; i < m_timerList.Count;)
         {
-            timer.Tick(deltaTime);
-        });
+            Timer timer = m_timerList[i];
+            if (timer.Tick(deltaTime)) { i++; }
+        }
     }
 
     public bool AddTimer(Timer p_timer)

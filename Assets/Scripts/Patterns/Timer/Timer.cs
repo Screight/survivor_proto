@@ -33,10 +33,10 @@ public class Timer
         TimerManager.Instance.AddTimer(this);
     }
 
-    public void Tick(float p_deltaTime)
+    public bool Tick(float p_deltaTime)
     {
-        if(m_currentTime == -1) { return; }
-        if (m_isPaused) { return; }
+        if(m_currentTime == -1) { return true; }
+        if (m_isPaused) { return true; }
 
         m_currentTime += p_deltaTime;
         OnTickEvent?.Invoke(p_deltaTime);
@@ -48,9 +48,11 @@ public class Timer
                 OnTickEvent = null;
                 OnFinishedEvent = null;
                 TimerManager.Instance.RemoveTimer(this);
+                return false;
             }
             else if (m_repeatOnFinished) { m_currentTime = 0; }
         }
+        return true;
     }
 
     public bool IsPaused { get { return m_isPaused && m_currentTime >=0; } }
