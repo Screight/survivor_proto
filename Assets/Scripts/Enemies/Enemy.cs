@@ -46,7 +46,15 @@ namespace SurvivorProto
         public void TakeDamage(float p_amount, Vector2 p_pos)
         {
             GameObject gO = LevelManager.Instance.SplashTextPool.GetObject();
-            if (gO != null) { gO.GetComponent<SplashText>().SetUp(p_pos, (int)p_amount); }
+            if (gO != null) {
+
+                GUIData data = GameManager.Instance.GUIData;
+                float radius = Random.Range(data.DamageSplashTextInsideRadius, data.DamageSplashTextOutsideRadius);
+                float angle = Random.Range(0, 2 * Mathf.PI);
+                Vector2 pos = radius * new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
+
+                gO.GetComponent<SplashText>().SetUp((Vector2)transform.position + pos, (int)p_amount);
+            }
 
             Health -= p_amount;
             if (Health <= 0) { OnDeath(); }
@@ -58,7 +66,9 @@ namespace SurvivorProto
             Experience expController = LevelManager.Instance.ExperienceManager.ExperienceCollectiblePool.GetObject().GetComponent<Experience>();
             EnemyManager.Instance.OnEnemyGeneralDeathEvent?.Invoke(this);
             expController.Initialize(m_data.Experience);
+
             expController.transform.position = transform.position;
+
             LevelManager.Instance.Spawner.ReturnEnemy(this);
             EnemyManager.Instance.RemoveEnemy(this);
         }

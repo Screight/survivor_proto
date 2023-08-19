@@ -45,7 +45,7 @@ namespace SurvivorProto
             GUIData data = GameManager.Instance.GUIData;
             for (int i = 0; i < m_healthIMGList.Count; i++)
             {
-                m_healthIMGList[i].sprite = i + 1 < p_value ? data.FullHealthSprite : data.EmptyHealthSprite;
+                m_healthIMGList[i].sprite = i < p_value ? data.FullHealthSprite : data.EmptyHealthSprite;
             }
 
             if (p_value < m_healthIMGList.Count) { InstantiateHealth(p_value - m_healthIMGList.Count, p_areNewHealthFull); }
