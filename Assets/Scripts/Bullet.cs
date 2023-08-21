@@ -56,7 +56,7 @@ namespace SurvivorProto
         private void OnTriggerEnter2D(Collider2D p_collision)
         {
             IDamagable damagable = p_collision.gameObject.GetComponent<IDamagable>();
-            if (damagable == null) { return; }
+            if (damagable == null || damagable.Health == 0) { return; }
             m_objectsPierced++;
             damagable.TakeDamage(m_damage);
             m_onBulletHitDamagableEvent?.Invoke(damagable, this);

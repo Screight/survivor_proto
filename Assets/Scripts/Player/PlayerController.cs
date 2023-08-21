@@ -71,7 +71,6 @@ namespace SurvivorProto
                 Vector2 direction = -(transform.position - enemy.transform.position).normalized;
                 enemy.SetVelocity(direction, m_playerData.RepulseOnHitForce);
             }
-
         }
 
         public void RestoreHealth(float p_amount)

@@ -9,18 +9,18 @@ namespace SurvivorProto
 
     public class Enemy : MonoBehaviour, IDamagable
     {
-        [SerializeField] EnemyData m_data;
+        [SerializeField] protected EnemyData m_data;
 
-        EnemyStats m_stats;
-        EnemyAI m_AIController;
+        protected EnemyStats m_stats;
+        protected EnemyAI m_AIController;
 
-        Rigidbody2D m_rb;
-        Animator m_animator;
-        SpriteRenderer m_renderer;
+        protected Rigidbody2D m_rb;
+        protected Animator m_animator;
+        protected SpriteRenderer m_renderer;
 
         int m_hitTriggerHash;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             m_rb = GetComponent<Rigidbody2D>();
             m_animator = GetComponent<Animator>();
@@ -36,12 +36,12 @@ namespace SurvivorProto
 
         private void Update()
         {
-            m_AIController.HandleAI();
+            if (m_AIController != null && m_AIController.IsEnabled) { m_AIController.HandleAI(); }
         }
 
-        private void OnTriggerEnter2D(Collider2D p_collision)
+        private void OnCollisionEnter2D(Collision2D p_collision)
         {
-            if (p_collision.GetComponent<PlayerController>() == null) { return; }
+            if (p_collision.gameObject.GetComponent<PlayerController>() == null) { return; }
             PlayerController.Instance.TakeDamage(m_data.Damage);
         }
 
@@ -49,24 +49,24 @@ namespace SurvivorProto
         {
             m_data = p_data;
             m_animator.runtimeAnimatorController = p_data.AnimatorController;
-            if(m_stats == null) { m_stats = new EnemyStats(m_data); }
-            else { m_stats.SetUpStats(m_data); }
+            InitializeStats(p_data);
             EnemyManager.Instance.AddEnemy(this);
             m_renderer.color = m_data.Color;
+
+            if (m_AIController == null) { m_AIController = new EnemyAIFollower(this, m_rb); }
+            m_AIController.IsEnabled = true;
         }
 
-        public void TakeDamage(float p_amount)
+        protected virtual void InitializeStats(EnemyData p_data)
         {
-            GameObject gO = LevelManager.Instance.SplashTextPool.GetObject();
-            if (gO != null) {
+            if(m_stats == null) { m_stats = new EnemyStats(m_data); }
+            else { m_stats.SetUpStats(p_data); }
+        }
 
-                GUIData data = GameManager.Instance.GUIData;
-                float radius = Random.Range(data.DamageSplashTextInsideRadius, data.DamageSplashTextOutsideRadius);
-                float angle = Random.Range(0, 2 * Mathf.PI);
-                Vector2 pos = radius * new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
-
-                gO.GetComponent<SplashText>().SetUp((Vector2)transform.position + pos, (int)p_amount, data.DamageSplashTextDuration, data.DamageSplashTextMaxSize);
-            }
+        public virtual void TakeDamage(float p_amount)
+        {
+            if(Health <= 0) { return; }
+            HandleSplashText(p_amount);
 
             Health -= p_amount;
             if (Health <= 0) { OnDeath(); }
@@ -75,13 +75,33 @@ namespace SurvivorProto
             m_animator.SetTrigger(m_hitTriggerHash);
         }
 
-        public void OnDeath()
+        protected void HandleSplashText(float p_amount)
         {
-            Experience expController = LevelManager.Instance.ExperienceManager.ExperienceCollectiblePool.GetObject().GetComponent<Experience>();
-            EnemyManager.Instance.OnEnemyGeneralDeathEvent?.Invoke(this);
-            expController.Initialize(m_data.Experience);
+            GameObject gO = LevelManager.Instance.SplashTextPool.GetObject();
+            if (gO != null)
+            {
 
-            expController.transform.position = transform.position;
+                GUIData data = GameManager.Instance.GUIData;
+                float radius = Random.Range(data.DamageSplashTextInsideRadius, data.DamageSplashTextOutsideRadius);
+                float angle = Random.Range(0, 2 * Mathf.PI);
+                Vector2 pos = radius * new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
+
+                gO.GetComponent<SplashText>().SetUp((Vector2)transform.position + pos, (int)p_amount, data.DamageSplashTextDuration, data.DamageSplashTextMaxSize);
+            }
+        }
+
+        public virtual void OnDeath()
+        {
+            GameObject gO = LevelManager.Instance.ExperienceManager.ExperienceCollectiblePool.GetObject();
+
+            if(gO != null) {
+                Experience expController = gO.GetComponent<Experience>();
+                expController.Initialize(m_data.Experience);
+                expController.transform.position = transform.position;
+            }
+            else { PlayerController.Instance.Stats.GainExperience(m_data.Experience); }
+            
+            EnemyManager.Instance.OnEnemyGeneralDeathEvent?.Invoke(this);
 
             LevelManager.Instance.Spawner.ReturnEnemy(this);
             EnemyManager.Instance.RemoveEnemy(this);

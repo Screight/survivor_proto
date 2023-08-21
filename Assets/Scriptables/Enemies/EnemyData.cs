@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SurvivorProto
 {
-    [CreateAssetMenu(fileName = "_EnemyData", menuName = "SurvivorProto/EnemyData", order = 1)]
+    [CreateAssetMenu(fileName = "_EnemyData", menuName = "SurvivorProto/Enemy/Follower", order = 1)]
     public class EnemyData : ScriptableObject
     {
         [SerializeField] ENEMY_TYPE m_type;

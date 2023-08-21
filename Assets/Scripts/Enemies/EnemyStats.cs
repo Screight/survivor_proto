@@ -16,7 +16,7 @@ namespace SurvivorProto
             SetUpStats(p_data);
         }
 
-        public void SetUpStats(EnemyData p_data) {
+        public virtual void SetUpStats(EnemyData p_data) {
             m_damage = p_data.Damage;
             m_speed = p_data.MovementSpeed;
             m_maxHealth = p_data.Health;

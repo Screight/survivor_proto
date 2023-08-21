@@ -21,6 +21,8 @@ namespace SurvivorProto
         event OnLightningBarrierTick m_onLightningBarrierTickEvent;
         public OnLightningBarrierTick OnLightningBarrierTickEvent { get { return m_onLightningBarrierTickEvent; } set { m_onLightningBarrierTickEvent = value; } }
 
+        Transform m_playerTr;
+
         private void Awake()
         {
             m_enemyInsideBarrierList = new List<Enemy>();
@@ -32,15 +34,21 @@ namespace SurvivorProto
             m_interval = m_data.DamageInterval;
 
             m_damageTimer = new Timer(m_interval, false, true, null, DamageEnemiesInside, true);
+            m_playerTr = PlayerController.Instance.transform;
+        }
+
+        private void Update()
+        {
+            transform.position = m_playerTr.position;
         }
 
         public void DamageEnemiesInside()
         {
-            for(int i = 0; i < m_enemyInsideBarrierList.Count;)
+            List<Enemy> enemyList = new List<Enemy>(m_enemyInsideBarrierList);
+            for(int i = 0; i < enemyList.Count; i++)
             {
-                Enemy enemy = m_enemyInsideBarrierList[i];
+                Enemy enemy = enemyList[i];
                 enemy.TakeDamage(m_damage);
-                if(enemy.Health > 0) { i++; }
             }
 
             m_numberOfTicks++;

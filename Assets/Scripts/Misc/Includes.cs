@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum PLAYER_STATES { DEFAULT}
-public enum ENEMY_TYPE { FOLLOWER, SHOOTER, LAST_NO_USE}
+public enum ENEMY_TYPE { FOLLOWER, EXPLOSIVE, LAST_NO_USE}
 
 public struct PositionTr
 {

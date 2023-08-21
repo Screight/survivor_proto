@@ -13,7 +13,7 @@ namespace SurvivorProto
             m_enemy = p_enemy;
             m_rb = p_rb;
 
-            m_steeringFollow = new SteeringFollow(m_enemy.transform, new PositionTr(PlayerController.Instance.transform, null), m_enemy.Stats.Speed);
+            m_steeringFollow = new SteeringFollow(m_enemy.transform, new PositionTr(PlayerController.Instance.transform, null), m_enemy.Stats == null ? 0 : m_enemy.Stats.Speed);
         }   
 
         public override void HandleAI()

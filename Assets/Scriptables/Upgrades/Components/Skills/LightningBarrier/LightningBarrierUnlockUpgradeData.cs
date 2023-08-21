@@ -11,7 +11,7 @@ namespace SurvivorProto
         [SerializeField] GameObject m_lightningBarrierPrefab;
         public override void ApplyUpgrade()
         {
-            LightningBarrierSkillController controller = MonoBehaviour.Instantiate(m_lightningBarrierPrefab, PlayerController.Instance.transform).GetComponent<LightningBarrierSkillController>();
+            LightningBarrierSkillController controller = MonoBehaviour.Instantiate(m_lightningBarrierPrefab, PlayerController.Instance.transform.parent).GetComponent<LightningBarrierSkillController>();
             LevelManager.Instance.SkillDictionary.Add(typeof(LightningBarrierSkillController), controller);
         }
 
