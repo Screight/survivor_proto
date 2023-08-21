@@ -90,5 +90,6 @@ namespace SurvivorProto
             m_reloadBarFillIMG.fillAmount = p_fillAmount;
         }
         public UpgradeWindowModel UpgradeWindowModel { get { return m_upgradeWindowModel; } }
+        public GameObject CurrentAmmoTarget { get { return m_currentAmmoTargetTMP.gameObject; } }
     }
 }

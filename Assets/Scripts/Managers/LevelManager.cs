@@ -57,6 +57,7 @@ namespace SurvivorProto
         public void HandleLevelUp()
         {
             Time.timeScale = 0;
+            GUIManager.Instance.CurrentAmmoTarget.SetActive(false);
             m_upgradeController.SetUpUpgradeMenu();
         }
 

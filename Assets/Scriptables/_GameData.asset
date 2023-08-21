@@ -32,4 +32,9 @@ MonoBehaviour:
   m_upgradeFamilyList:
   - {fileID: 11400000, guid: e781ef4f35fffd442b362c248a6c3d38, type: 2}
   - {fileID: 11400000, guid: 7e8340eddc9fd644ab9eae3b11dc0680, type: 2}
+  - {fileID: 11400000, guid: 39d553481bcfc5a49897072cb7675d3f, type: 2}
+  - {fileID: 11400000, guid: 63618b84287175e4f9ead078ddb3092f, type: 2}
+  - {fileID: 11400000, guid: 99c22abb2c9848a4abba866e94f59942, type: 2}
   m_numberOfUpgradesToChooseFrom: 3
+  m_onCollectExpAC: {fileID: 8300000, guid: 902a7e544d5d1294e92e1527289c6b20, type: 3}
+  m_onLevelUpAC: {fileID: 8300000, guid: 6cff4112b449e8644b6794d2e6908e04, type: 3}

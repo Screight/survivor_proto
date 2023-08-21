@@ -16,4 +16,5 @@ MonoBehaviour:
   m_health: 3
   m_collectionRange: 3
   m_repulseOnHitRange: 3
-  m_repulseOnHitForce: 5
+  m_repulseOnHitForce: 10
+  m_onHitAC: {fileID: 8300000, guid: ed20b76f96d156342ab54228a04d685a, type: 3}

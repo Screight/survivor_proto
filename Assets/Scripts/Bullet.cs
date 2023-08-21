@@ -66,6 +66,7 @@ namespace SurvivorProto
             if(enemy != null) {
                 Vector2 direction = (enemy.transform.position - transform.position).normalized;
                 enemy.SetVelocity(direction, m_weaponController.Recoil);
+                if(enemy.Health > 0) { enemy.PlaySound(m_weaponController.Data.OnHitAC); }
             }
 
             if(m_objectsPierced >= m_weaponController.Piercing)

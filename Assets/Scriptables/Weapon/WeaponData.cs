@@ -22,6 +22,15 @@ namespace SurvivorProto
 
         [SerializeField] GameObject m_bulletPrefab;
 
+        [Header("Audio Clips")]
+        [SerializeField] AudioClip m_onShotBulletAC;
+        [SerializeField] AudioClip m_onRechargeWeaponAC;
+        [SerializeField] AudioClip m_onHitBulletAC;
+
+        public AudioClip OnShotBulletAC { get { return m_onShotBulletAC; } }
+        public AudioClip OnReloadWeapon { get { return m_onRechargeWeaponAC; } }
+        public AudioClip OnHitAC { get { return m_onHitBulletAC; } }
+
         public int BaseDamage { get { return m_baseDamage; } }
         public float Recoil { get { return m_recoil; } }
         public float FireRate { get { return m_fireRate; } }

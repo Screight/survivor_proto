@@ -83,8 +83,11 @@ namespace SurvivorProto
         void ChangeToNextWave()
         {
             WaveData data = m_spawnLevelData.WaveDataList[m_level];
-            if(data == null) { return; }
             m_level++;
+            if (m_level >= m_spawnLevelData.WaveDataList.Count) {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+                return;
+            }
             m_spawnEnemiesTimer.Period = 1 / data.Frecuency;
             m_waveDurationTimer.Period = data.Duration;
         }

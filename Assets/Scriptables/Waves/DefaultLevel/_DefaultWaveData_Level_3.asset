@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_waveInfoList:
   - m_enemyData: {fileID: 11400000, guid: 0d9c5401167424f4cb2059a9987cd6cf, type: 2}
-    m_chance: 1
-  m_frecuency: 1
+    m_chance: 0.75
+  - m_enemyData: {fileID: 11400000, guid: 0d9c5401167424f4cb2059a9987cd6cf, type: 2}
+    m_chance: 0.25
+  m_frecuency: 2
   m_duration: 60

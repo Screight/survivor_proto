@@ -13,20 +13,27 @@ namespace SurvivorProto
 
         [SerializeField] LayerMask m_enemyLayerMask;
 
+        [SerializeField] ParticleSystem m_walkParticles;
+        [SerializeField] ParticleSystem m_hitParticles;
+
         Weapon m_weaponController;
 
         PlayerStats m_playerStats;
         PLAYER_STATES m_state;
 
         Rigidbody2D m_rb;
+        AudioSource m_audioSource;
 
         protected override void Awake()
         {
             base.Awake();
+            m_audioSource = GetComponent<AudioSource>();
             m_rb = GetComponent<Rigidbody2D>();
             m_playerStats = new PlayerStats(m_playerData);
             m_weaponController = new Weapon(m_weaponData);
             m_weaponController.InitializePool();
+
+            m_walkParticles.Stop();
         }
 
         // Update is called once per frame
@@ -38,11 +45,22 @@ namespace SurvivorProto
                     HandleMovement();
                     break;
             }
+
+            if (m_movementInput.x != 0 || m_movementInput.y != 0) {
+                if (!m_walkParticles.isEmitting) { m_walkParticles.Play(); }
+            } else { m_walkParticles.Stop(); }
+
+            if (m_walkParticles.isEmitting) {
+                var vel = m_walkParticles.velocityOverLifetime;
+                vel.x = -m_movementInput.x;
+                vel.y = -m_movementInput.y;
+            }
         }
 
         void HandleMovement()
         {
             m_movementInput = InputManager.Instance.RawMovementInput;
+            //m_movementInput = m_movementInput.normalized;
         }
 
         private void FixedUpdate()
@@ -71,6 +89,10 @@ namespace SurvivorProto
                 Vector2 direction = -(transform.position - enemy.transform.position).normalized;
                 enemy.SetVelocity(direction, m_playerData.RepulseOnHitForce);
             }
+            m_hitParticles.Play();
+            m_audioSource.PlayOneShot(m_playerData.OnHitAC);
+
+            if(Health <= 0) { OnDeath(); }
         }
 
         public void RestoreHealth(float p_amount)
@@ -81,7 +103,7 @@ namespace SurvivorProto
 
         public void OnDeath()
         {
-            throw new System.NotImplementedException();
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
 
         public Vector2 Movement { get { return m_movementInput; } }

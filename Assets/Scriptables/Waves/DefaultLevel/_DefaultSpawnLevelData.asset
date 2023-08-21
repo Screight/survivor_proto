@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: _DefaultSpawnLevelData
   m_EditorClassIdentifier: 
   m_waveDataList:
-  - {fileID: 11400000, guid: 26a75ea843bde8542a84e61f70a3025d, type: 2}
+  - {fileID: 11400000, guid: 8060cd9c6a824d24a86afa4e7091f56b, type: 2}
   - {fileID: 11400000, guid: dd6ee282ffc53374c87b51cee0a5bd7c, type: 2}
   - {fileID: 11400000, guid: dce6c9e2a66d5a044a4ba0790d745b97, type: 2}
+  - {fileID: 11400000, guid: 26a75ea843bde8542a84e61f70a3025d, type: 2}
+  - {fileID: 11400000, guid: 0d804b55ac035a445b753979c9094928, type: 2}
+  - {fileID: 11400000, guid: 44c1e51df03afae4d9d1006e8e93cda7, type: 2}

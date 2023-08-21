@@ -33,7 +33,10 @@ namespace SurvivorProto
                 m_upgradeIconModelList.Add(new UpgradeIconModel(MonoBehaviour.Instantiate(p_upgradeIconPrefab, m_gO.transform.Find("UpgradeList"))));
             }
 
-            m_gO.transform.Find("ChooseUpgradeBTN").GetComponent<Button>().onClick.AddListener(() => { LevelManager.Instance.UpgradeController.ChooseSelectedUpgrade(); });
+            m_gO.transform.Find("ChooseUpgradeBTN").GetComponent<Button>().onClick.AddListener(() => {
+                GUIManager.Instance.CurrentAmmoTarget.SetActive(true);
+                LevelManager.Instance.UpgradeController.ChooseSelectedUpgrade();
+            });
         }
 
         public GameObject GameObject { get { return m_gO; } }

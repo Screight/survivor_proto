@@ -9,6 +9,7 @@ namespace SurvivorProto
 
     public class Enemy : MonoBehaviour, IDamagable
     {
+        // SHOULD BE CHANGED TO BE A BASE CLASS AND MAKE A ENEMYFOLLOWER CLASS TO SUBSTITUTE THIS ONE BEHAVIOUR
         [SerializeField] protected EnemyData m_data;
 
         protected EnemyStats m_stats;
@@ -17,6 +18,7 @@ namespace SurvivorProto
         protected Rigidbody2D m_rb;
         protected Animator m_animator;
         protected SpriteRenderer m_renderer;
+        AudioSource m_audioSource;
 
         int m_hitTriggerHash;
 
@@ -25,6 +27,7 @@ namespace SurvivorProto
             m_rb = GetComponent<Rigidbody2D>();
             m_animator = GetComponent<Animator>();
             m_renderer = GetComponent<SpriteRenderer>();
+            m_audioSource = GetComponent<AudioSource>();
 
             m_hitTriggerHash = Animator.StringToHash("hitTrigger");
         }
@@ -45,7 +48,7 @@ namespace SurvivorProto
             PlayerController.Instance.TakeDamage(m_data.Damage);
         }
 
-        public void Initialize(EnemyData p_data)
+        public virtual void Initialize(EnemyData p_data)
         {
             m_data = p_data;
             m_animator.runtimeAnimatorController = p_data.AnimatorController;
@@ -67,7 +70,7 @@ namespace SurvivorProto
         {
             if(Health <= 0) { return; }
             HandleSplashText(p_amount);
-
+            
             Health -= p_amount;
             if (Health <= 0) { OnDeath(); }
             EnemyManager.Instance.OnEnemyDamagedEvent?.Invoke(this);
@@ -122,5 +125,6 @@ namespace SurvivorProto
             set { m_stats.Health = value; }
         }
         public void SetDefaultColor() { m_renderer.color = m_data.Color; }
+        public void PlaySound(AudioClip p_audioClip) { m_audioSource.PlayOneShot(p_audioClip); }
     }
 }

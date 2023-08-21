@@ -42,7 +42,13 @@ namespace SurvivorProto
         {
             m_curExperience += p_exp;
             GUIManager.Instance.SetExpFillTo(m_curExperience / m_maxExperience);
-            CheckIfLevelUp();
+            if (CheckIfLevelUp())
+            {
+                AudioManager.Instance.PlayAudioClipEffect(GameManager.Instance.GameData.OnLevelUpAC);
+            }
+            else {
+                AudioManager.Instance.PlayAudioClipEffect(GameManager.Instance.GameData.OnCollectExpAC);
+            }
         }
 
         public bool CheckIfLevelUp()

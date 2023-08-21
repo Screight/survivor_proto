@@ -15,12 +15,15 @@ MonoBehaviour:
   m_baseDamage: 50
   m_recoil: 3
   m_fireRate: 4
-  m_projectiles: 1
-  m_ammo: 999
+  m_projectiles: 2
+  m_ammo: 12
   m_reloadTime: 1
   m_bulletSpeed: 10
   m_piercing: 0
   m_bulletLifeTime: 1
-  m_spread: 15
+  m_spread: 20
   m_bounce: 0
   m_bulletPrefab: {fileID: 3562582260977030662, guid: 39bdff80a78604a4a9cff4047f0ed311, type: 3}
+  m_onShotBulletAC: {fileID: 8300000, guid: 5e7c78b7e60fe7f44968764c4d4f3f5b, type: 3}
+  m_onRechargeWeaponAC: {fileID: 8300000, guid: 4921583a4e5e5d34d8e09c6ea21c3512, type: 3}
+  m_onHitBulletAC: {fileID: 8300000, guid: acf1f562c2b696f45888e720841358ed, type: 3}

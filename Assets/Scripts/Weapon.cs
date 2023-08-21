@@ -27,6 +27,7 @@ namespace SurvivorProto
         Timer m_shootingTimer;
 
         GUIManager m_GUIManager;
+        AudioSource m_audioSource;
 
         event OnFireWeapon m_onFireBulletEvent;
         public OnFireWeapon OnFireBulletEvent
@@ -55,6 +56,7 @@ namespace SurvivorProto
             m_shootingTimer = new Timer(shootingPeriod, false, true, null, new OnFinishedDelegate(TryShooting), true);
 
             m_GUIManager = GUIManager.Instance;
+            m_audioSource = PlayerController.Instance.GetComponent<AudioSource>();
         }
 
         public void InitializePool() {
@@ -78,6 +80,8 @@ namespace SurvivorProto
 
             m_GUIManager.SetReloadBarTo(true);
             m_GUIManager.SetReloadBarFillTo(0);
+
+            m_audioSource.PlayOneShot(m_data.OnReloadWeapon);
         }
 
         void UpdateReloadBar(float p_deltaTime)
@@ -89,6 +93,7 @@ namespace SurvivorProto
         {
             m_currentAmmo--;
             m_onFireBulletEvent?.Invoke(this);
+            m_audioSource.PlayOneShot(m_data.OnShotBulletAC);
 
             Vector2 targetPos = Camera.main.ScreenToWorldPoint(InputManager.Instance.MousePosition);
 

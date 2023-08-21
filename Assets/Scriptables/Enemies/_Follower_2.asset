@@ -16,6 +16,6 @@ MonoBehaviour:
   m_color: {r: 1, g: 0.5240722, b: 0, a: 1}
   m_movementSpeed: 6
   m_health: 100
-  m_experience: 10
+  m_experience: 6
   m_animatorController: {fileID: 9100000, guid: d24564a5f1ad0cc4c937341ee59cc673, type: 2}
   m_damage: 1

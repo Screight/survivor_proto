@@ -21,6 +21,10 @@ namespace SurvivorProto
         [SerializeField] List<UpgradeFamilyData> m_upgradeFamilyList;
         [SerializeField] int m_numberOfUpgradesToChooseFrom;
 
+        [Header("Audio")]
+        [SerializeField] AudioClip m_onCollectExpAC;
+        [SerializeField] AudioClip m_onLevelUpAC;
+
         public GameObject GetEnemyTypePrefab(ENEMY_TYPE p_type)
         {
             foreach (EnemyTypePrefab element in m_enemyPrefabList)
@@ -30,6 +34,8 @@ namespace SurvivorProto
             return null;
         }
 
+        public AudioClip OnCollectExpAC { get { return m_onCollectExpAC; } }
+        public AudioClip OnLevelUpAC { get { return m_onLevelUpAC; } }
         public float SplashTextDMGLifeTime { get { return m_splashTextDMGLifeTime; } }
         public int NumberOfUpgradesToChooseFrom { get { return m_numberOfUpgradesToChooseFrom; } }
         public List<ExperienceCollectible> ExperienceCollectibleList { get { return m_experienceCollectibleList; } }

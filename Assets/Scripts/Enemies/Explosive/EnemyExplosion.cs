@@ -34,24 +34,20 @@ namespace SurvivorProto
         [SerializeField] LayerMask m_layerToAvoidWhileExploding;
         [SerializeField] LayerMask m_defaultLayerCollision;
 
+        CircleCollider2D m_playerDetectionCollider;
         protected override void Awake()
         {
             base.Awake();
             m_deathTriggerHash = Animator.StringToHash("deathTrigger");
             m_collider = GetComponent<Collider2D>();
-        }
-
-        private void OnTriggerEnter2D(Collider2D p_collision)
-        {
-            if (Health <= 0) { return; }
-            Health = 0;
-            OnDeath();
+            m_playerDetectionCollider = transform.GetChild(0).GetComponent<CircleCollider2D>();
         }
 
         public override void OnDeath()
         {
             m_animator.SetTrigger(m_deathTriggerHash);
             m_rb.velocity = Vector3.zero;
+            m_rb.simulated = false;
             m_AIController.IsEnabled = false;
             m_collider.excludeLayers = m_layerToAvoidWhileExploding;
         }
@@ -59,6 +55,14 @@ namespace SurvivorProto
         private void OnDisable()
         {
             m_collider.excludeLayers = m_defaultLayerCollision;
+            m_rb.simulated = true;
+            transform.localScale = Vector3.one;
+        }
+
+        public override void Initialize(EnemyData p_data)
+        {
+            base.Initialize(p_data);
+            m_playerDetectionCollider.radius = Data.ExplosionRadius;
         }
 
         protected override void InitializeStats(EnemyData p_data)

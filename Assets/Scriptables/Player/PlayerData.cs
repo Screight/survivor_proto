@@ -14,6 +14,9 @@ namespace SurvivorProto
         [SerializeField] float m_repulseOnHitRange;
         [SerializeField] float m_repulseOnHitForce;
 
+        [SerializeField] AudioClip m_onHitAC;
+
+        public AudioClip OnHitAC { get { return m_onHitAC; } }
         public float MovementSpeed { get { return m_movementSpeed; } }
         public int Health { get { return m_health; } }
         public float CollectionRange { get { return m_collectionRange; } }
