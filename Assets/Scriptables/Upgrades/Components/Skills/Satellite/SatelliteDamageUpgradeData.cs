@@ -14,6 +14,6 @@ namespace SurvivorProto
             (LevelManager.Instance.SkillDictionary[typeof(SatelliteSkillController)] as SatelliteSkillController).Damage *= 1 + m_damageMultiplier;
         }
 
-        public override string ParsedDescription() { return m_description.Replace("{damageMultiplier}", (100 * m_damageMultiplier).ToString()); ; }
+        protected override string ParsedDescription(string p_description) { return p_description.Replace("{damageMultiplier}", (100 * m_damageMultiplier).ToString()); ; }
     }
 }

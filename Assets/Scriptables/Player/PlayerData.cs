@@ -14,6 +14,8 @@ namespace SurvivorProto
         [SerializeField] float m_repulseOnHitRange;
         [SerializeField] float m_repulseOnHitForce;
 
+        List<UpgradeFamilyData> m_upgradeFamilyList;
+
         [SerializeField] AudioClip m_onHitAC;
 
         public AudioClip OnHitAC { get { return m_onHitAC; } }
@@ -22,5 +24,6 @@ namespace SurvivorProto
         public float CollectionRange { get { return m_collectionRange; } }
         public float RepulseOnHitRange { get { return m_repulseOnHitRange; } }
         public float RepulseOnHitForce { get { return m_repulseOnHitForce; } }
+        public List<UpgradeFamilyData> UpgradeFamilyList { get { return m_upgradeFamilyList; } }
     }
 }

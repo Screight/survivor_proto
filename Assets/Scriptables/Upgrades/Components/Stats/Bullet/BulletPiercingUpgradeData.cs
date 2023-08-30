@@ -14,9 +14,9 @@ namespace SurvivorProto
             PlayerController.Instance.WeaponController.Piercing += m_bulletPiercing;
         }
 
-        public override string ParsedDescription()
+        protected override string ParsedDescription(string p_description)
         {
-            return m_description.Replace("{bulletPiercing}", m_bulletPiercing.ToString());
+            return p_description.Replace("{bulletPiercing}", m_bulletPiercing.ToString());
         }
     }
 }

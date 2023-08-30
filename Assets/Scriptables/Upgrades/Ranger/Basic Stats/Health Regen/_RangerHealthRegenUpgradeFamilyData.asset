@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d5600f634c3584ea5447dda1b9b038, type: 3}
+  m_Name: _RangerHealthRegenUpgradeFamilyData
+  m_EditorClassIdentifier: 
+  m_upgradeList:
+  - {fileID: 11400000, guid: ff084088bafa1f447a6e75492831da4e, type: 2}
+  - {fileID: 11400000, guid: 19c3097f36204704894241eb619f2ae1, type: 2}
+  - {fileID: 11400000, guid: 3c008c5a44e3bde46997a835de7cf904, type: 2}

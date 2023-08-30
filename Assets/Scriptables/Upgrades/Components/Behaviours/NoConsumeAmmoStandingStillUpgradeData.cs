@@ -27,6 +27,6 @@ namespace SurvivorProto
             p_weapon.Ammo++;
         }
 
-        public override string ParsedDescription() { return m_description; }
+        protected override string ParsedDescription(string p_description) { return p_description; }
     }
 }

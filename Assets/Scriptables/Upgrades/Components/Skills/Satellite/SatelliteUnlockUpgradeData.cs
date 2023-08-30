@@ -14,9 +14,6 @@ namespace SurvivorProto
             SatelliteSkillController controller = MonoBehaviour.Instantiate(m_satellitePrefab, PlayerController.Instance.transform.parent).GetComponent<SatelliteSkillController>();
             LevelManager.Instance.SkillDictionary.Add(typeof(SatelliteSkillController), controller);
         }
-
-        
-
-        public override string ParsedDescription() { return m_description.Replace("{satelliteDamage}", m_skillData.Damage.ToString()); ; }
+        protected override string ParsedDescription(string p_description) { return p_description.Replace("{satelliteDamage}", m_skillData.Damage.ToString()); ; }
     }
 }

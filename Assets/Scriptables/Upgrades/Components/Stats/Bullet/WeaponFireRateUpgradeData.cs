@@ -15,9 +15,9 @@ namespace SurvivorProto
             PlayerController.Instance.WeaponController.FireRate += m_fireRateMultiplier; ;
         }
 
-        public override string ParsedDescription()
+        protected override string ParsedDescription(string p_description)
         {
-            return m_description.Replace("{fireRateMultiplier}", (100 * m_fireRateMultiplier).ToString());
+            return p_description.Replace("{fireRateMultiplier}", (100 * m_fireRateMultiplier).ToString());
         }
     }
 }

@@ -8,7 +8,7 @@ namespace SurvivorProto
     public class UpgradeData : ScriptableObject
     {
         [SerializeField] Sprite m_icon;
-        [SerializeField] string m_name;
+        [SerializeField] uint m_nameLocalisationID;
 
         [SerializeField] List<UpgradeComponentData> m_upgradesList;
 
@@ -19,14 +19,14 @@ namespace SurvivorProto
                 component.ApplyUpgrade();
             });
         }
-        public string Name { get { return m_name; } }
+        public string Name { get { return LocalisationManager.Instance.GetText(m_nameLocalisationID); } }
         public string Description {
             get
             {
                 string text = "";
                 for(int i = 0; i < m_upgradesList.Count; i++)
                 {
-                    text += m_upgradesList[i].ParsedDescription();
+                    text += m_upgradesList[i].Description;
                     if(i < m_upgradesList.Count - 1) { text += "\n"; }
                 }
                 return text;

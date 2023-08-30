@@ -34,10 +34,12 @@ namespace SurvivorProto
             }
         }
 
-        public override string ParsedDescription()
+        protected override string ParsedDescription(string p_description)
         {
-            string text = m_description.Replace("{numberOfBullets}", m_numberOfBullets.ToString());
-            return text.Replace("{bulletPercentageDamage}", (100 * m_bulletPercentageDamage).ToString());
+
+            return p_description.
+                                Replace("{numberOfBullets}", m_numberOfBullets.ToString()).
+                                Replace("{bulletPercentageDamage}", (100 * m_bulletPercentageDamage).ToString());
         }
     }
 }

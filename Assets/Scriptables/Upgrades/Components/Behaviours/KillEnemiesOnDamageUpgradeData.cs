@@ -22,6 +22,6 @@ namespace SurvivorProto
             p_enemy.OnDeath();
         }
 
-        public override string ParsedDescription() { return m_description.Replace("{healthPercentage}", (100 * m_healthPercentage).ToString()); }
+        protected override string ParsedDescription(string p_description) { return p_description.Replace("{healthPercentage}", (100 * m_healthPercentage).ToString()); }
     }
 }

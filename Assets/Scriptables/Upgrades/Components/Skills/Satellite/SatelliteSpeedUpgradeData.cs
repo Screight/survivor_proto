@@ -14,6 +14,6 @@ namespace SurvivorProto
             (LevelManager.Instance.SkillDictionary[typeof(SatelliteSkillController)] as SatelliteSkillController).RotationalSpeed *= 1 + m_speedMultiplier;
         }
 
-        public override string ParsedDescription() { return m_description.Replace("{speedMultiplier}", (100 * m_speedMultiplier).ToString()); ; }
+        protected override string ParsedDescription(string p_description) { return p_description.Replace("{speedMultiplier}", (100 * m_speedMultiplier).ToString()); }
     }
 }

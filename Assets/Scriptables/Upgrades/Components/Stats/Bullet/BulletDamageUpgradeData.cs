@@ -15,9 +15,9 @@ namespace SurvivorProto
             PlayerController.Instance.WeaponController.BaseDamage *= 1 + m_bulletDamage;
         }
 
-        public override string ParsedDescription()
+        protected override string ParsedDescription(string p_description)
         {
-            return m_description.Replace("{bulletDamage}", (100 * m_bulletDamage).ToString());
+            return p_description.Replace("{bulletDamage}", (100 * m_bulletDamage).ToString());
         }
     }
 }

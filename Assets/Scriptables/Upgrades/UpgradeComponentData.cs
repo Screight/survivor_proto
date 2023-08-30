@@ -6,11 +6,9 @@ namespace SurvivorProto
 {
     public abstract class UpgradeComponentData : ScriptableObject
     {
-        [TextArea(5, 5)]
-        [SerializeField] protected string m_description;
-
+        [SerializeField] uint m_descriptionLocalisationID;
         public abstract void ApplyUpgrade();
-        protected string Description { get { return m_description; } }
-        public abstract string ParsedDescription();
+        public string Description { get { return ParsedDescription(LocalisationManager.Instance.GetText(m_descriptionLocalisationID)); } }
+        protected abstract string ParsedDescription(string p_description);
     }
 }

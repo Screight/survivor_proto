@@ -1,0 +1,61 @@
+,ID,Variables,Description
+Ranger,Base stats,,
+,0,healthRegen,Health Regen +{healthRegen}
+,1,,Regeneration I
+,2,,Regeneration II
+,3,,Regeneration III
+,4,,Constitution I
+,5,,Constitution II
+,6,,Constitution III
+,7,health,Max Health +{health}
+,8,,Thick Skin I
+,9,,Thick Skin II
+,10,,Thick Skin III
+,11,physicalResistance,Physical resistance +{physicalResistance}
+,12,,Agility I
+,13,,Agility II
+,14,,Agility III
+,15,movementSpeed,Movement speed +{movementSpeed}%
+,Basic attack,,
+,16,,Sharpest arrows
+,17,damage,Damage +{damage}%
+,18,,Rapid fire
+,19,attackSpeed,Attack speed +{attackSpeed}%
+,20,,Lighter arrows
+,21,projectileSpeed,Projectile speed +{projectileSpeed}%
+,22,,Basic attack ranger EVO I
+,23,,Explosive arrow
+,24,"numberOfAttacks
+damage",Every {numberOfAttacks} attacks fire an explosive arrow instead that deals {damage}% damage on explosion.
+,25,,MultiHit
+,26,"numberOfArrows
+damage",Fire {numberOfArrows} instead. Each arrow deals {damage}% damage.
+,Skill 1,,
+,27,,Entangling roots
+,28,damage,Snares and damage enemies overtime for {damage}% damage.
+,29,,Root damage
+,30,damage,Damage +{damage}%
+,31,,Garden size
+,32,radius,Radius +{radius}%
+,33,,Lifetime
+,34,duration,Duration +{duration}%
+,,,Entangling roots EVO I
+,,,Entangling roots option 1
+,,"{stackTime}
+{maxStacks}
+{stunDuration}",Apply a stack to enemies every {stackTime}s. Every {maxStacks} stacks stun the enemy for {stunDuration}s.
+,,,Entangling roots option 2
+,,"{slowDown}
+{damage}","Heavily increase damage to enemies by {damage}%. Enemies are no longer snared, they are slowed by {slowDown}% instead."
+,Ultimate,,
+,,,True Marksmanship
+,,"{duration}
+{attackSpeed}
+{critChance}
+{stackDamage}","During {duration}s gain {attackSpeed}% attack speed and {critChance}% crit. Durint the duration, every succesfull attack builds a stack of ""True shot"". When the ultimate ends, the ranger releases all accumulated stacks in a rapid succession of devastating shots that deal {stackDamage}% increased damage per stack."
+,,,Ultimate duration I
+,,{duration},Duration +{duration}s.
+,,,Ultimate Attack Speed I
+,,{attackSpeed},Attack speed +{attackSpeed}%
+,,,Ultimate critical chance I
+,,{critChance},Critical chance +{critChance}%

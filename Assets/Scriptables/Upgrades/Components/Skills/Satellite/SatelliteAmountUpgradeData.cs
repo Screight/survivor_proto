@@ -13,6 +13,6 @@ namespace SurvivorProto
             (LevelManager.Instance.SkillDictionary[typeof(SatelliteSkillController)] as SatelliteSkillController).AddSatellites(m_numberOfSatellites);
         }
 
-        public override string ParsedDescription() { return m_description.Replace("{numberOfSatellites}", m_numberOfSatellites.ToString()); ; }
+        protected override string ParsedDescription(string p_description) { return p_description.Replace("{numberOfSatellites}", m_numberOfSatellites.ToString()); ; }
     }
 }

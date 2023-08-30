@@ -15,9 +15,9 @@ namespace SurvivorProto
             PlayerController.Instance.WeaponController.BulletSize *= 1 + m_bulletSizeMultiplier;
         }
 
-        public override string ParsedDescription()
+        protected override string ParsedDescription(string p_description)
         {
-            return m_description.Replace("{bulletSizeMultiplier}", (100 * m_bulletSizeMultiplier).ToString());
+            return p_description.Replace("{bulletSizeMultiplier}", (100 * m_bulletSizeMultiplier).ToString());
         }
     }
 }

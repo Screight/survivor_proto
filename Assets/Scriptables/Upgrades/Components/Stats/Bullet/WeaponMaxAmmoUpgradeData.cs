@@ -14,9 +14,9 @@ namespace SurvivorProto
             PlayerController.Instance.WeaponController.MaxAmmo += m_maxAmmo; ;
         }
 
-        public override string ParsedDescription()
+        protected override string ParsedDescription(string p_description)
         {
-            return m_description.Replace("{maxAmmo}", m_maxAmmo.ToString());
+            return p_description.Replace("{maxAmmo}", m_maxAmmo.ToString());
         }
     }
 }

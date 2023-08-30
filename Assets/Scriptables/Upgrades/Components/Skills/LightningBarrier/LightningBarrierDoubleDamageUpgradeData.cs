@@ -29,10 +29,10 @@ namespace SurvivorProto
             else if(rest == 1) { controller.Damage /= (1 + m_damageMultiplier); }
         }
 
-        public override string ParsedDescription() {
-            return m_description.
-                Replace("{damageMultiplier}", (1 + m_damageMultiplier).ToString()).
-                Replace("{numberOfTicks}", m_numberOfTicks.ToString());
+        protected override string ParsedDescription(string p_description) {
+            return p_description.
+                                Replace("{damageMultiplier}", (1 + m_damageMultiplier).ToString()).
+                                Replace("{numberOfTicks}", m_numberOfTicks.ToString());
         }
     }
 }

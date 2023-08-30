@@ -16,6 +16,9 @@ namespace SurvivorProto
 
         float m_collectionRange;
 
+        float m_healthRegen;
+        float m_physicalResistance;
+
         public PlayerStats(PlayerData p_data)
         {
             m_movementSpeed = p_data.MovementSpeed;
@@ -29,15 +32,6 @@ namespace SurvivorProto
             m_maxExperience = 10;
         }
 
-        public float CollectionRange { get { return m_collectionRange; } }
-        public float MovementSpeed { get { return m_movementSpeed; } set { m_movementSpeed = value; } }
-        public int Health { get { return m_health; } set { m_health = value; } }
-        public int MaxHealth { get { return m_maxHealth; } set { m_maxHealth = value; } }
-        public int Level {
-            get { return m_level; }
-            set { m_level = value; }
-        }
-        public float Experience { get { return m_curExperience; } set { m_curExperience = value; } }
         public void GainExperience(float p_exp)
         {
             m_curExperience += p_exp;
@@ -68,6 +62,21 @@ namespace SurvivorProto
             
             LevelManager.Instance.HandleLevelUp();
         }
+
+        #region Accessors
+        public float PhysicalResistance { get { return m_physicalResistance; } set { m_physicalResistance = value; } }
+        public float HealthRegen { get { return m_healthRegen; } set { m_healthRegen = value; } }
+        public float CollectionRange { get { return m_collectionRange; } }
+        public float MovementSpeed { get { return m_movementSpeed; } set { m_movementSpeed = value; } }
+        public int Health { get { return m_health; } set { m_health = value; } }
+        public int MaxHealth { get { return m_maxHealth; } set { m_maxHealth = value; } }
+        public int Level
+        {
+            get { return m_level; }
+            set { m_level = value; }
+        }
+        public float Experience { get { return m_curExperience; } set { m_curExperience = value; } }
+        #endregion
 
     }
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d5600f634c3584ea5447dda1b9b038, type: 3}
+  m_Name: _RangerMovementSpeedUpgradeFamilyData
+  m_EditorClassIdentifier: 
+  m_upgradeList:
+  - {fileID: 11400000, guid: e4eb6003f96c582459f688a751e99cdc, type: 2}
+  - {fileID: 11400000, guid: d42837ba51d2ea24e8cc69fb9a08ed71, type: 2}
+  - {fileID: 11400000, guid: 509a429ef0874694dae0d31a2cf9ca41, type: 2}

@@ -15,8 +15,8 @@ namespace SurvivorProto
             LevelManager.Instance.SkillDictionary.Add(typeof(LightningBarrierSkillController), controller);
         }
 
-        
 
-        public override string ParsedDescription() { return m_description.Replace("{lightningBarrierDamage}", m_skillData.Damage.ToString()); ; }
+
+        protected override string ParsedDescription(string p_description) { return p_description.Replace("{lightningBarrierDamage}", m_skillData.Damage.ToString()); ; }
     }
 }

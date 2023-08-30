@@ -15,9 +15,9 @@ namespace SurvivorProto
             PlayerController.Instance.WeaponController.Spread += m_spread;
         }
 
-        public override string ParsedDescription()
+        protected override string ParsedDescription(string p_description)
         {
-            return m_description.Replace("{spread}", m_spread.ToString());
+            return p_description.Replace("{spread}", m_spread.ToString());
         }
     }
 }

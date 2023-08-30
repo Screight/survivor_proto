@@ -14,9 +14,9 @@ namespace SurvivorProto
             PlayerController.Instance.WeaponController.Bounce += m_bounce;
         }
 
-        public override string ParsedDescription()
+        protected override string ParsedDescription(string p_description)
         {
-            return m_description.Replace("{bounce}", m_bounce.ToString());
+            return p_description.Replace("{bounce}", m_bounce.ToString());
         }
     }
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d5600f634c3584ea5447dda1b9b038, type: 3}
+  m_Name: _RangerPhysicalResistanceUpgradeFamilyData
+  m_EditorClassIdentifier: 
+  m_upgradeList:
+  - {fileID: 11400000, guid: 31572afd01da46145a6cea5342351ad3, type: 2}
+  - {fileID: 11400000, guid: 47ac98f6854d96d4797ef989d2e898d6, type: 2}
+  - {fileID: 11400000, guid: 16c0baeacdae7f9418f54c10acd03cd3, type: 2}

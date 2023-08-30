@@ -19,10 +19,10 @@ namespace SurvivorProto
             if(m_sizeMultiplier > 0) { controller.Size *= 1 + m_sizeMultiplier; }
         }
 
-        public override string ParsedDescription() {
-            return m_description.
-                Replace("{damageMultiplier}", (100 * m_damageMultiplier).ToString()).
-                Replace("{sizeMultiplier}", (100 * m_sizeMultiplier).ToString()); ;
+        protected override string ParsedDescription(string p_description) {
+            return p_description.
+                                Replace("{damageMultiplier}", (100 * m_damageMultiplier).ToString()).
+                                Replace("{sizeMultiplier}", (100 * m_sizeMultiplier).ToString()); ;
         }
     }
 }

@@ -19,6 +19,6 @@ namespace SurvivorProto
             p_bullet.ObjectsPierced--;
         }
 
-        public override string ParsedDescription() { return m_description; }
+        protected override string ParsedDescription(string p_description) { return p_description; }
     }
 }

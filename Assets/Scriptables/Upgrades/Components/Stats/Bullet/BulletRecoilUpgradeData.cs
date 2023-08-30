@@ -15,9 +15,9 @@ namespace SurvivorProto
             PlayerController.Instance.WeaponController.Recoil *= 1 + m_recoilStrengthModifier;
         }
 
-        public override string ParsedDescription()
+        protected override string ParsedDescription(string p_description)
         {
-            return m_description.Replace("{recoilStrengthModifier}", (100 * m_recoilStrengthModifier).ToString());
+            return p_description.Replace("{recoilStrengthModifier}", (100 * m_recoilStrengthModifier).ToString());
         }
     }
 }

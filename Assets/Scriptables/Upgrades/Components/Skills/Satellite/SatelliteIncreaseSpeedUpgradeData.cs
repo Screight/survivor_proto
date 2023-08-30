@@ -30,8 +30,8 @@ namespace SurvivorProto
             controller.RotationalSpeed = controller.Data.RotationalSpeed;
         }
 
-        public override string ParsedDescription() { 
-            return m_description.Replace("{period}", m_period.ToString())
+        protected override string ParsedDescription(string p_description) { 
+            return p_description.Replace("{period}", m_period.ToString())
                                 .Replace("{speedMultiplier}", m_speedMultiplier.ToString()); ; }
     }
 }

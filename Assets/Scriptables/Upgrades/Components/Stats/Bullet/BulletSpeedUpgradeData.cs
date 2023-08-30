@@ -15,9 +15,9 @@ namespace SurvivorProto
             PlayerController.Instance.WeaponController.BulletSpeed *= 1 + m_bulletSpeed;
         }
 
-        public override string ParsedDescription()
+        protected override string ParsedDescription(string p_description)
         {
-            return m_description.Replace("{bulletSpeed}", (100 * m_bulletSpeed).ToString());
+            return p_description.Replace("{bulletSpeed}", (100 * m_bulletSpeed).ToString());
         }
     }
 }
