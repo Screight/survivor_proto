@@ -24,6 +24,9 @@ namespace SurvivorProto
         Rigidbody2D m_rb;
         AudioSource m_audioSource;
 
+        Timer m_healthRegenTimer;
+
+
         protected override void Awake()
         {
             base.Awake();
@@ -36,7 +39,17 @@ namespace SurvivorProto
             m_walkParticles.Stop();
         }
 
-        // Update is called once per frame
+        private void Start()
+        {
+            GUIManager.Instance.SetHealthTo(Health, m_playerStats.MaxHealth);
+            m_healthRegenTimer = new Timer(1, false, true, null, OnHealthRegen, true);
+        }
+
+        void OnHealthRegen()
+        {
+            RestoreHealth(m_playerStats.HealthRegen);
+        }
+
         void Update()
         {
             switch (m_state)
@@ -77,8 +90,8 @@ namespace SurvivorProto
 
         public void TakeDamage(float p_amount)
         {
-            Health -= (int)p_amount;
-            GUIManager.Instance.SetHealthTo((int)Health);
+            Health -= Damage.GetPhysicalDamage(p_amount, m_playerStats.PhysicalResistance, m_playerStats.Level);
+            GUIManager.Instance.SetHealthTo(Health, m_playerStats.MaxHealth);
 
             RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, 3, Vector2.one, 0, m_enemyLayerMask);
 
@@ -97,8 +110,12 @@ namespace SurvivorProto
 
         public void RestoreHealth(float p_amount)
         {
-            Health += (int)p_amount;
-            GUIManager.Instance.SetHealthTo((int)Health);
+            if(Health > m_playerStats.MaxHealth){ return; }
+
+            if(m_playerStats.MaxHealth - Health > p_amount) { Health += p_amount; }
+            else { Health = m_playerStats.MaxHealth; }
+            
+            GUIManager.Instance.SetHealthTo(Health, m_playerStats.MaxHealth);
         }
 
         public void OnDeath()
@@ -113,7 +130,7 @@ namespace SurvivorProto
         public float Health
         {
             get { return m_playerStats.Health; }
-            set { m_playerStats.Health = (int)value; }
+            set { m_playerStats.Health = value; }
         }
     }
 }

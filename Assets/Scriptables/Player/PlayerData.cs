@@ -9,6 +9,8 @@ namespace SurvivorProto
     {
         [SerializeField] float m_movementSpeed;
         [SerializeField] int m_health;
+        [SerializeField] float m_healthRegen;
+
         [SerializeField] float m_collectionRange;
 
         [SerializeField] float m_repulseOnHitRange;
@@ -19,6 +21,7 @@ namespace SurvivorProto
         [SerializeField] AudioClip m_onHitAC;
 
         public AudioClip OnHitAC { get { return m_onHitAC; } }
+        public float HealthRegen { get { return m_healthRegen; } }
         public float MovementSpeed { get { return m_movementSpeed; } }
         public int Health { get { return m_health; } }
         public float CollectionRange { get { return m_collectionRange; } }

@@ -21,48 +21,29 @@ namespace SurvivorProto
         [SerializeField] Image m_experienceFillIMG;
 
         [Header("Health")]
-        [SerializeField] GameObject m_healthIconPrefab;
-        [SerializeField] Transform m_healthIconParentTr;
-        List<Image> m_healthIMGList;
+        [SerializeField] Image m_healthIMG;
+        [SerializeField] TMPro.TextMeshProUGUI m_healthTMP;
+
+        [Header("Resource")]
+        [SerializeField] Image m_resourceIMG;
+        [SerializeField] TMPro.TextMeshProUGUI m_resourceTMP;
 
         protected override void Awake()
         {
             base.Awake();
             m_levelTMP.text = "Level  1";
             m_experienceFillIMG.fillAmount = 0;
-            m_healthIMGList = new List<Image>();
         }
 
         private void Start()
         {
             m_upgradeWindowModel = new UpgradeWindowModel(transform.Find("UpgradeWindow").gameObject, m_upgradeIconPrefab);
             m_upgradeWindowModel.GameObject.SetActive(false);
-
-            InstantiateHealth((int)PlayerController.Instance.Stats.MaxHealth);
         }
-        public void AddMaxHealth(int p_value, bool p_areNewHealthFull = true) { InstantiateHealth(p_value, p_areNewHealthFull = true); }
-        public void SetHealthTo(int p_value, bool p_areNewHealthFull = true)
+        public void SetHealthTo(float p_value, float p_maxValue)
         {
-            GUIData data = GameManager.Instance.GUIData;
-            for (int i = 0; i < m_healthIMGList.Count; i++)
-            {
-                m_healthIMGList[i].sprite = i < p_value ? data.FullHealthSprite : data.EmptyHealthSprite;
-            }
-
-            if (p_value < m_healthIMGList.Count) { InstantiateHealth(p_value - m_healthIMGList.Count, p_areNewHealthFull); }
-        }
-
-        void InstantiateHealth(int p_value, bool p_areNewHealthFull = true)
-        {
-            if(p_value < 0) { return; }
-            GUIData data = GameManager.Instance.GUIData;
-            for (int i = 0; i < p_value; i++)
-            {
-                m_healthIMGList.Add(
-                    Instantiate(m_healthIconPrefab, m_healthIconParentTr).GetComponent<Image>()
-                    );
-                m_healthIMGList[m_healthIMGList.Count - 1].sprite = p_areNewHealthFull ? data.FullHealthSprite : data.EmptyHealthSprite;
-            }
+            m_healthTMP.text = ((int)p_value).ToString() + "/" + ((int)p_maxValue).ToString();
+            m_healthIMG.fillAmount = (float)p_value / (float)p_maxValue;
         }
         public void SetLevelTimerTo(int p_minutes, int p_seconds) {
             string secondsTxt = p_seconds.ToString();

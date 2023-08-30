@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: _PlayerData
   m_EditorClassIdentifier: 
   m_movementSpeed: 5
-  m_health: 3
+  m_health: 1000
+  m_healthRegen: 0.5
   m_collectionRange: 3
   m_repulseOnHitRange: 3
   m_repulseOnHitForce: 10

@@ -7,8 +7,9 @@ namespace SurvivorProto
     public class PlayerStats
     {
         float m_movementSpeed;
-        int m_health;
-        int m_maxHealth;
+        float m_health;
+        float m_maxHealth;
+        float m_healthRegen;
 
         int m_level;
         float m_curExperience;
@@ -16,7 +17,6 @@ namespace SurvivorProto
 
         float m_collectionRange;
 
-        float m_healthRegen;
         float m_physicalResistance;
 
         public PlayerStats(PlayerData p_data)
@@ -24,6 +24,8 @@ namespace SurvivorProto
             m_movementSpeed = p_data.MovementSpeed;
             m_maxHealth = p_data.Health;
             m_health = m_maxHealth;
+            m_healthRegen = p_data.HealthRegen;
+
             m_collectionRange = p_data.CollectionRange;
 
             m_level = 1;
@@ -68,8 +70,8 @@ namespace SurvivorProto
         public float HealthRegen { get { return m_healthRegen; } set { m_healthRegen = value; } }
         public float CollectionRange { get { return m_collectionRange; } }
         public float MovementSpeed { get { return m_movementSpeed; } set { m_movementSpeed = value; } }
-        public int Health { get { return m_health; } set { m_health = value; } }
-        public int MaxHealth { get { return m_maxHealth; } set { m_maxHealth = value; } }
+        public float Health { get { return m_health; } set { m_health = value; } }
+        public float MaxHealth { get { return m_maxHealth; } set { m_maxHealth = value; } }
         public int Level
         {
             get { return m_level; }

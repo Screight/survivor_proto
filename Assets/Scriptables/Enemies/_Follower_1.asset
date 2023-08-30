@@ -18,4 +18,4 @@ MonoBehaviour:
   m_health: 100
   m_experience: 2
   m_animatorController: {fileID: 9100000, guid: d24564a5f1ad0cc4c937341ee59cc673, type: 2}
-  m_damage: 1
+  m_damage: 100

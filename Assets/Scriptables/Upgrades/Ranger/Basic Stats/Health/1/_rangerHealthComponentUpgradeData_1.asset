@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: _rangerHealthComponentUpgradeData_1
   m_EditorClassIdentifier: 
   m_descriptionLocalisationID: 7
-  m_health: 1
+  m_health: 100
   m_healthRegen: 0
   m_movementSpeed: 0
   m_physicalResistance: 0

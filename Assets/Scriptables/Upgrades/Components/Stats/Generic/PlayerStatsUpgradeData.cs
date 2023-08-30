@@ -19,8 +19,13 @@ namespace SurvivorProto
         public override void ApplyUpgrade()
         {
             PlayerStats stats = PlayerController.Instance.Stats;
-            stats.MaxHealth += m_health;
-            stats.Health += m_health;
+            if(m_health > 0)
+            {
+                stats.MaxHealth += m_health;
+                stats.Health += m_health;
+                GUIManager.Instance.SetHealthTo(stats.Health, stats.MaxHealth);
+            }
+            
             stats.HealthRegen += m_healthRegen;
             stats.PhysicalResistance += m_physicalResistance;
             stats.MovementSpeed *= 1 + m_movementSpeed;

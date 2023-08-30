@@ -68,3 +68,16 @@ public class RandomPointBetween2Rectangles
         }
     }
 }
+
+public class Damage
+{
+    public static float GetDamageReduction(float p_armor, float p_level)
+    {
+        return 1 - 1 / (1 + (p_armor / 50 * p_level));
+    }
+
+    public static float GetPhysicalDamage(float p_attackValue, float p_armor, int p_level)
+    {
+        return p_attackValue * (1 - GetDamageReduction(p_armor, p_level));
+    }
+}
